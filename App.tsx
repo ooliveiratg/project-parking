@@ -1,13 +1,11 @@
+import './NativeWind.css';
 import { StatusBar } from 'expo-status-bar';
-import { View, Text  } from 'react-native';
-
-
+import { View, Text, SafeAreaView  } from 'react-native';
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+ <SafeAreaView className="flex-1 items-center justify-center bg-red-500">
+  <Text className="text-white text-2xl">Teste NativeWind</Text>
+</SafeAreaView>
   );
 }
 
