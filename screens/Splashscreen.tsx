@@ -1,11 +1,11 @@
 import { View, Text , Image} from 'react-native'
-import Svg from 'react-native-svg';
+import BackgroundSplashScreen from '../assets/svg/background-gradient.svg'
 
 
 export function Splashscreen() {
   return (
-    <Svg ></Svg>
       <View className=''>
+        <BackgroundSplashScreen />
       </View>
     
   )

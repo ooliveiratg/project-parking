@@ -8,13 +8,15 @@
         "*",
         "src/types/*"
       ]
-    }
+      
+    },
   },
   "include": [
     "nativewind.d.ts",
     "App.tsx",
     "components/**/*",
-    "nativewind-env.d.ts"
+    "nativewind-env.d.ts",
+    "svg.d.ts"
   ],
   "extends": "expo/tsconfig.base"
 }
