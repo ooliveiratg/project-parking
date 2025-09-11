@@ -13,7 +13,7 @@
   },
   "include": [
     "nativewind.d.ts",
-    "App.tsx",
+    "app/App.tsx",
     "components/**/*",
     "nativewind-env.d.ts",
     "svg.d.ts"
