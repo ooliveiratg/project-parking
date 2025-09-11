@@ -26,7 +26,7 @@ export default function Index() {
     const timer = setTimeout(() => {
 
       console.log("SplashScreen escondida");
-      router.replace("/SingIn");
+      router.replace("/screens/SingIn");
     }, 3000);
     return () => clearTimeout(timer);
   });
