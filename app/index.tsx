@@ -26,10 +26,10 @@ export default function Index() {
     const timer = setTimeout(() => {
 
       console.log("SplashScreen escondida");
-      router.replace("/home");
+      router.replace("/SingIn");
     }, 3000);
     return () => clearTimeout(timer);
-  }, []);
+  });
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-black ">
