@@ -1,3 +1,1 @@
-export const images = {
-    backgroundLogin: require('./png/background-login.png')
-}
+export { default as backgroundLogin } from './png/background-login.png'

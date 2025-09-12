@@ -15,7 +15,9 @@
     "App/**/*",
     "components/**/*",
     "nativewind-env.d.ts",
-    "svg.d.ts"
+    "svg.d.ts",
+    "./types/image.d.ts"
+
   ],
   "extends": "expo/tsconfig.base"
 }
