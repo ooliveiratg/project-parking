@@ -1,8 +1,8 @@
-  import { useFonts } from "expo-font"
+  import { useFonts, Inter_500Medium } from "@expo-google-fonts/inter"
 
   export const useAppFonts = () => {
   return useFonts({
-    inter_regular: require("../../assets/fonts/Inter_18pt-Regular.ttf")
+    Inter_500Medium
   })
 
 }

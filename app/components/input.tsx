@@ -1,21 +1,20 @@
-import { TextInput } from "react-native";
+import { TextInput, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface InputTypes {
   placeholder: string;
-  className?:string
-  type?: 'email' | 'password'
+  className?: string;
+  type?: "email" | "password";
 }
 
-
-export function Input({
-  placeholder,
-  className,
-  type
-}: InputTypes) {
+export function Input({ placeholder, className, type }: InputTypes) {
   return (
-    <TextInput
-      placeholder={placeholder}
-      className={`min-w-full h-[46px] font-inter ${type === 'email'? "rounded-tr-[10px] rounded-tl-[10px]" : "rounded-br-[10px] rounded-bl-[10px]"} ${className}`}
-    />
+    <View className={`min-w-full flex-row items-center  ${type === "email" ? "rounded-tr-[10px] rounded-tl-[10px]" : "rounded-br-[10px] rounded-bl-[10px]"} ${className}`}>
+      <MaterialIcons name="mail-outline" className="pl-[14px]" color={"#0052B4"}  size={16}  />
+      <TextInput
+        placeholder={placeholder}
+        className={'w-full h-[46px]  font-inter pl-[12px]'}
+      />
+    </View>
   );
 }
