@@ -3,6 +3,7 @@
     "name": "project-parking",
     "slug": "project-parking",
     "version": "1.0.0",
+    "scheme": "meuapp",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

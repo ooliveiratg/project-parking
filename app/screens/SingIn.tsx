@@ -5,8 +5,6 @@ import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
-import { LinearGradient } from "expo-linear-gradient";
-
 export default function SingIn() {
   const router = useRouter();
 
@@ -32,7 +30,6 @@ export default function SingIn() {
             />
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
               <Text className="text-white  border-b border-b-white text-[12px]">
-                {" "}
                 Esqueceu a senha?
               </Text>
 
