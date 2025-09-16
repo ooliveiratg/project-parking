@@ -40,7 +40,7 @@ export default function SingIn() {
                 classNameButton=""
                 activeOpacity={0.7}
                 classNameText="text-white border-b border-b-white text-[12px]"
-                onPress={() => router.navigate("/")}
+                onPress={() => router.replace("/screens/SingUp")}
                 title={"Cadastre-se"}
               ></ButtonStyle>
             </View>
