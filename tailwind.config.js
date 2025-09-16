@@ -13,7 +13,7 @@ module.exports = {
       },
       colors: {
         blue: "#0052B4"
-      }
+      },
     },
   },
   plugins: [],
