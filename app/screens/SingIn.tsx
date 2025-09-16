@@ -44,40 +44,23 @@ export default function SingIn() {
                 title={"Cadastre-se"}
               ></ButtonStyle>
             </View>
-
-            <LinearGradient
-              colors={[
-                "#1D61E7",
-                "rgba(255, 255, 255, 0.12)",
-                "rgba(255, 255, 255, 0.12)",
-              ]}
-              locations={[1, 0.5, 0.12]} 
-              start={{ x: 0, y: 0 }} 
-              end={{ x: 0, y: 1 }}
-              style={{ borderRadius: 10 }}
-            >
               <ButtonStyle
                 title={"Entrar"}
+                gradient={true}
                 classNameText="text-white font-inter text-[14px]"
-                classNameButton="w-full h-[48px] items-center justify-center rounded-[6px]  rounded-[10px]"
+                classNameButton="min-w-full h-[48px] items-center justify-center rounded-[10px]"
                 Style={[
                   {
-                    shadowColor: "#253EA7",
-                    shadowOffset: { width: 0, height: 1 },
-                    shadowOpacity: 0.48,
-                    shadowRadius: 2,
-                    elevation: 1,
+                    boxShadow:"0px 1px 2px 0px rgb(37,62,167,0.48)",
+                    shadowRadius: 10,
+                    
                   },
                   {
-                    shadowColor: "#253EA7",
-                    shadowOffset: { width: 0, height: 0 },
-                    shadowOpacity: 1,
-                    shadowRadius: 0,
-                    elevation: 1,
+                    boxShadow:"0px 0px 0px 1px #253EA7",
+                     shadowRadius: 10,
                   },
                 ]}
               ></ButtonStyle>
-            </LinearGradient>
           </View>
         </View>
       </ImageBackground>
