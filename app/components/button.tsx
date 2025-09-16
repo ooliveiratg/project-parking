@@ -1,5 +1,6 @@
 
 import { LinearGradient } from "expo-linear-gradient";
+import { ReactNode } from "react";
 import {
   Button,
   TouchableOpacity,
@@ -10,7 +11,7 @@ import {
 interface ButtonProps {
   classNameButton?: string;
   classNameText?: string;
-  title: React.ReactNode;
+  title: ReactNode;
   onPress?: () => void;
   activeOpacity?: number;
   Style?: StyleProp<ViewStyle>;
