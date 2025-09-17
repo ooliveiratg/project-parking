@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-        inter: "Inter_500Medium"
+        inter: "Inter_500Medium",
+        interBold: "Inter_700Bold"
       },
       colors: {
         blue: "#0052B4"
