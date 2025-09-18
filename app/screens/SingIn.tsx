@@ -7,6 +7,7 @@ import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
 import { LinearGradient } from "expo-linear-gradient";
 import { useAppFonts } from "app/utils/fonts";
+import { position } from "app/interfaces/components/input";
 
 export default function SingIn() {
   const router = useRouter();
@@ -24,7 +25,9 @@ export default function SingIn() {
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
             <Input bg="white" placeholder={"Digite seu email"} icon="email" />
-            <Input bg="white" placeholder={"Digite sua senha"} icon="password" />
+
+            <Input iconPosition={position.BOTH} bg="white" placeholder={"Digite sua senha"} icon="password" />
+
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
               <Text className="text-white  border-b border-b-white text-[12px]">
                 {" "}

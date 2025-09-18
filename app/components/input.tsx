@@ -2,28 +2,43 @@ import { TextInput, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { JSX, useState } from "react";
 import { ButtonStyle } from "./button";
-import { InputTypes } from "app/interfaces/components/input";
+import { InputTypes, position } from "app/interfaces/components/input";
 import { iconsMap } from "app/utils/iconsMap";
 
-export function Input({bg = "white" ,...props }: InputTypes) {
+export function Input({ bg = "white", ...props }: InputTypes) {
   const [visiblePassword, setVisiblePassword] = useState(false);
 
   return (
     <View
-      className={` flex-row items-cente flex-1r  bg-${bg}
-     justify-between ${props.border}   ${props.icon === "email" ? "rounded-tr-[10px] rounded-tl-[10px]" : props.icon === "password" ? "rounded-br-[10px] rounded-bl-[10px]" : "rounded-[10px]"} `}
-     style={props.shadow}
+      className={` 
+        flex-row items-center  
+        bg-${bg}
+        justify-between 
+        ${props.border}   
+     ${
+       props.icon === "email"
+         ? "rounded-tr-[10px] rounded-tl-[10px]"
+         : props.icon === "password"
+           ? "rounded-br-[10px] rounded-bl-[10px]"
+           : "rounded-[10px]"
+     } `}
+      style={props.shadow}
     >
-      <View className="flex-row items-center ">
-        {iconsMap[props.icon as keyof typeof iconsMap]?? props.iconName }
+      
+      <View className="flex-row items-center  flex-1">
+       {(props.iconPosition === position.BOTH  || props.icon === "email")&&
+          (iconsMap[props.icon as keyof typeof iconsMap] ?? props.iconName)}
+
         <TextInput
           placeholder={props.placeholder}
           secureTextEntry={visiblePassword}
-          className={`h-[46px]  font-inter pl-[12px] `}
+          className={`h-[46px] flex-1  font-inter pl-[12px] `}
         />
       </View>
-
-      {props.icon === "password" && (
+      <View className="block">
+      {(props.iconPosition === position.BOTH ||
+        props.iconPosition === position.RIGHT) &&
+        props.icon === "password" &&(
         <ButtonStyle
           gradient={false}
           icon={true}
@@ -36,9 +51,11 @@ export function Input({bg = "white" ,...props }: InputTypes) {
               color={"#ACB5BB"}
               size={16}
             />
+            
           }
         />
       )}
+      </View>
     </View>
   );
 }

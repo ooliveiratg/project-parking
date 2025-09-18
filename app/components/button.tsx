@@ -1,6 +1,5 @@
 
 import { LinearGradient } from "expo-linear-gradient";
-import { ReactNode } from "react";
 import {
   TouchableOpacity,
   Text,
