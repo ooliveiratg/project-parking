@@ -9,15 +9,18 @@ import {
 import {ButtonProps} from "../interfaces/components/button"
 export function ButtonStyle({
   title,
-  classNameText,
   onPress,
-  classNameButton,
+  icon = false,
+  width,
+  color,
+  height,
   Style,
+  border,
   gradient = false,
 }: ButtonProps) {
   return (
     <TouchableOpacity
-      className={`rounded-[10px] ${classNameButton}`}
+      className={icon? `${width} ${height}` :   `rounded-[10px] ${width}  ${height}`}
       onPress={onPress}
       activeOpacity={0.8}
       style={Style}
@@ -30,10 +33,10 @@ export function ButtonStyle({
           className="w-full h-full items-center justify-center"
           style={{borderRadius:10}}
         >
-              {typeof title === "string" ? <Text className={`font-inter text-white ${classNameText}`}>{title}</Text> : title}
+              {typeof title === "string" ? <Text className={`font-inter text-white`}>{title}</Text> : title}
         </LinearGradient>
       ) : (
-          typeof title === "string" ? <Text className={classNameText}>{title}</Text> : title
+          typeof title === "string" ? <Text className={`font-inter text-${color} ${border}`}>{title}</Text> : title
       )}
     </TouchableOpacity>
   );

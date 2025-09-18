@@ -18,8 +18,12 @@ export default function SingUp() {
                 <Text className="font-interBold text-white text-[32px] pt-[104px]">Cadastro</Text>
 
                 <View className="flex-row pt-[8px] gap-[6px]">
-                    <Text className="font-inter text-white text-[14px]">Já tem uma conta? </Text> 
-                    <ButtonStyle onPress={() => router.replace("screens/SingIn")}  classNameText="text-blue border-b border-b-blue" title={"Log In"} />
+                    <Text className="font-inter text-white text-[12px]">Já tem uma conta? </Text> 
+                    <ButtonStyle  
+                    onPress={() => router.replace("screens/SingIn")}  
+                    color="blue400"
+                    border="border-b border-blue400"
+                    title={"Log In"} />
                 </View>
 
             </ImageBackground>

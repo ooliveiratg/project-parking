@@ -32,16 +32,17 @@ export default function SingIn() {
               </Text>
 
               <ButtonStyle
-                classNameText="text-white border-b border-b-white text-[12px]"
                 onPress={() => router.replace("screens/SingUp")}
                 title={"Cadastre-se"}
-              ></ButtonStyle>
+                color="white"
+                border="border-b border-white"
+                ></ButtonStyle>
             </View>
             <ButtonStyle
               title={"Entrar"}
               gradient={true}
-              classNameText="text-[14px]"
-              classNameButton="min-w-full h-[48px] "
+              width="min-w-full"
+              height="h-[48px]"
               Style={[
                 {
                   boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",
@@ -51,8 +52,7 @@ export default function SingIn() {
                   boxShadow: "0px 0px 0px 1px #253EA7",
                   shadowRadius: 10,
                 },
-              ]}
-            ></ButtonStyle>
+              ]}></ButtonStyle>
           </View>
         </View>
       </ImageBackground>

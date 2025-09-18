@@ -25,7 +25,9 @@ export function Input({ placeholder, icon, bg }: InputTypes) {
       {icon === "password" && (
         <ButtonStyle
           gradient={false}
-          classNameButton=" w-[30px] h-[30px]"
+          icon={true}
+          width="w-[30px]"
+          heightIcon="h-[30px]"
           onPress={() => setVisiblePassword(!visiblePassword)}
           title={
             <MaterialIcons

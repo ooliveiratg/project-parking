@@ -14,7 +14,8 @@ module.exports = {
         interSemiBold: "Inter_600SemiBold"
       },
       colors: {
-        blue: "#0052B4"
+        blue: "#0052B4",
+        blue400: "#4D81E7"
       },
     },
   },
