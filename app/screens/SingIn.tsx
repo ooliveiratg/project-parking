@@ -6,9 +6,12 @@ import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
 import { LinearGradient } from "expo-linear-gradient";
+import { useAppFonts } from "app/utils/fonts";
 
 export default function SingIn() {
   const router = useRouter();
+ const [ fonts ] = useAppFonts()
+  if(!fonts) return null
 
   return (
     <SafeAreaView className="flex-1">

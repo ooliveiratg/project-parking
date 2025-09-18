@@ -2,28 +2,16 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { ReactNode } from "react";
 import {
-  Button,
   TouchableOpacity,
   Text,
-  StyleProp,
-  ViewStyle,
 } from "react-native";
-interface ButtonProps {
-  classNameButton?: string;
-  classNameText?: string;
-  title: ReactNode;
-  onPress?: () => void;
-  activeOpacity?: number;
-  Style?: StyleProp<ViewStyle>;
-  gradient?: boolean;
-}
 
+import {ButtonProps} from "../interfaces/components/button"
 export function ButtonStyle({
   title,
   classNameText,
   onPress,
   classNameButton,
-  activeOpacity,
   Style,
   gradient = false,
 }: ButtonProps) {

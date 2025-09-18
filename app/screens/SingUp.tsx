@@ -3,8 +3,11 @@ import { backgroundLogin } from "../../assets/images";
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons";
 import { useRouter } from "expo-router";
+import { useAppFonts } from "app/utils/fonts";
 export default function SingUp() {
     const router = useRouter();
+    const [ fonts ] = useAppFonts()
+    if(!fonts) return null
     return (
         <SafeAreaView className="flex-1">
             <ImageBackground
