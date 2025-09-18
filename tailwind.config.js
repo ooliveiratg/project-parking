@@ -11,11 +11,14 @@ module.exports = {
       fontFamily:{
         inter: "Inter_500Medium",
         interBold: "Inter_700Bold",
-        interSemiBold: "Inter_600SemiBold"
+        interSemiBold: "Inter_600SemiBold",
+        jakarSans: "PlusJakartaSans_500Medium"
       },
       colors: {
         blue: "#0052B4",
-        blue400: "#4D81E7"
+        blue400: "#4D81E7",
+        gray300: "#EDF1F3",
+        gray200: "#6C7278"
       },
     },
   },

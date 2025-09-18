@@ -34,7 +34,7 @@ export default function SingIn() {
               <ButtonStyle
                 onPress={() => router.replace("screens/SingUp")}
                 title={"Cadastre-se"}
-                color="white"
+                color="text-white"
                 border="border-b border-white"
                 ></ButtonStyle>
             </View>
