@@ -29,9 +29,9 @@ export function ButtonStyle({
 }: ButtonProps) {
   return (
     <TouchableOpacity
-      className={classNameButton}
+      className={`rounded-[10px] ${classNameButton}`}
       onPress={onPress}
-      activeOpacity={activeOpacity}
+      activeOpacity={0.8}
       style={Style}
     >
       {gradient === true ? (
@@ -39,10 +39,10 @@ export function ButtonStyle({
           colors={["#4A90E2", "#1D61E7"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          className="w-full h-full items-center justify-center "
+          className="w-full h-full items-center justify-center"
           style={{borderRadius:10}}
         >
-              {typeof title === "string" ? <Text className={classNameText}>{title}</Text> : title}
+              {typeof title === "string" ? <Text className={`font-inter text-white ${classNameText}`}>{title}</Text> : title}
         </LinearGradient>
       ) : (
           typeof title === "string" ? <Text className={classNameText}>{title}</Text> : title

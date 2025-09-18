@@ -12,14 +12,11 @@ export default function SingUp() {
                 resizeMode="cover"
                 className="w-full h-[26.9%] flex-col items-start pl-[24px] flex"
             >
-                <ButtonStyle classNameButton=" pt-[64px]" onPress={() => router.replace("screens/SingIn")}  title={
-                    <MaterialIcons name="arrow-back" color={"white"} size={24} />
-                } />
-                <Text className="font-interBold text-white text-[32px] pt-[24px]">Cadastro</Text>
+                <Text className="font-interBold text-white text-[32px] pt-[104px]">Cadastro</Text>
 
-                <View className="flex-row pt-[8px] ">
-
-                    <Text className="font-inter text-white text-[14px]  pb-[32px] ">Já tem uma conta? </Text> <ButtonStyle classNameText="text-blue  content-center" title={"Log in"} />
+                <View className="flex-row pt-[8px] gap-[6px]">
+                    <Text className="font-inter text-white text-[14px]">Já tem uma conta? </Text> 
+                    <ButtonStyle onPress={() => router.replace("screens/SingIn")}  classNameText="text-blue border-b border-b-blue" title={"Log In"} />
                 </View>
 
             </ImageBackground>

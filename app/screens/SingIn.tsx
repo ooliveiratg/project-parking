@@ -20,16 +20,8 @@ export default function SingIn() {
         <View className="flex-col justify-center items-center gap-[96px] flex-1 ">
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
-            <Input
-              placeholder={"Digite seu email"}
-              type="email"
-              className="bg-white"
-            />
-            <Input
-              placeholder={"Digite sua senha"}
-              type="password"
-              className="bg-white"
-            />
+            <Input bg="white" placeholder={"Digite seu email"} icon="email" />
+            <Input bg="white" placeholder={"Digite sua senha"} icon="password" />
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
               <Text className="text-white  border-b border-b-white text-[12px]">
                 {" "}
@@ -37,29 +29,27 @@ export default function SingIn() {
               </Text>
 
               <ButtonStyle
-                activeOpacity={0.7}
                 classNameText="text-white border-b border-b-white text-[12px]"
                 onPress={() => router.replace("screens/SingUp")}
                 title={"Cadastre-se"}
               ></ButtonStyle>
             </View>
-              <ButtonStyle
-                title={"Entrar"}
-                gradient={true}
-                classNameText="text-white font-inter text-[14px]"
-                classNameButton="min-w-full h-[48px] items-center justify-center rounded-[10px]"
-                Style={[
-                  {
-                    boxShadow:"0px 1px 2px 0px rgb(37,62,167,0.48)",
-                    shadowRadius: 10,
-                    
-                  },
-                  {
-                    boxShadow:"0px 0px 0px 1px #253EA7",
-                     shadowRadius: 10,
-                  },
-                ]}
-              ></ButtonStyle>
+            <ButtonStyle
+              title={"Entrar"}
+              gradient={true}
+              classNameText="text-[14px]"
+              classNameButton="min-w-full h-[48px] "
+              Style={[
+                {
+                  boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",
+                  shadowRadius: 10,
+                },
+                {
+                  boxShadow: "0px 0px 0px 1px #253EA7",
+                  shadowRadius: 10,
+                },
+              ]}
+            ></ButtonStyle>
           </View>
         </View>
       </ImageBackground>

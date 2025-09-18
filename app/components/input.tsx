@@ -1,51 +1,41 @@
 import { TextInput, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { ButtonStyle } from "./button";
+import { InputTypes } from "app/interfaces/components/input";
+import { iconsMap } from "app/utils/iconsMap";
 
-interface InputTypes {
-  placeholder: string;
-  className?: string;
-  type?: "email" | "password";
-}
+export function Input({ placeholder, icon, bg }: InputTypes) {
+  const [visiblePassword, setVisiblePassword] = useState(false);
 
-
-
-export function Input({ placeholder, className, type }: InputTypes) {
-  const [visiblePassword,setVisiblePassword] = useState(false) 
-  
-   
   return (
-    <View className={`min-w-full flex-row items-center
-     justify-between ${type === "email" ? "rounded-tr-[10px] rounded-tl-[10px]" : "rounded-br-[10px] rounded-bl-[10px]"} ${className}`}>
+    <View
+      className={` flex-row items-center bg-${bg}
+     justify-between ${icon === "email" ? "rounded-tr-[10px] rounded-tl-[10px]" : icon === "password" ? "rounded-br-[10px] rounded-bl-[10px]" : "rounded-[10px]"} `}
+    >
+      <View className="flex-row items-center ">
+        {iconsMap[icon]}
+        <TextInput
+          placeholder={placeholder}
+          secureTextEntry={visiblePassword}
+          className={" h-[46px]  font-inter pl-[12px]"}
+        />
+      </View>
 
-    <View className="flex-row items-center ">
-      {type === "email"? (
-        <MaterialIcons name="mail-outline" className="pl-[14px]" color={"#0052B4"}  size={16}  />
-      ):(
-        <MaterialIcons name="lock-outline" className="pl-[14px]" color={"#0052B4"}  size={16}  />
-      )
-
-    }
-     
-      <TextInput
-        placeholder={placeholder}
-        secureTextEntry={visiblePassword}
-        className={' h-[46px]  font-inter pl-[12px]'}
-      />
-</View>
-
-{type === "password" &&(
-  <ButtonStyle
-  gradient={false} 
-  classNameButton=" w-[30px] h-[30px]" 
-  onPress={() => setVisiblePassword(!visiblePassword)} 
-  title={
-    <MaterialIcons name={visiblePassword ? "visibility-off": "visibility"}  color={"#ACB5BB"} size={16} />
-  } />
-
-)
-}
-    </View>  
+      {icon === "password" && (
+        <ButtonStyle
+          gradient={false}
+          classNameButton=" w-[30px] h-[30px]"
+          onPress={() => setVisiblePassword(!visiblePassword)}
+          title={
+            <MaterialIcons
+              name={visiblePassword ? "visibility-off" : "visibility"}
+              color={"#ACB5BB"}
+              size={16}
+            />
+          }
+        />
+      )}
+    </View>
   );
 }

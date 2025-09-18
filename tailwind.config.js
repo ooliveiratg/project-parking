@@ -10,7 +10,8 @@ module.exports = {
     extend: {
       fontFamily:{
         inter: "Inter_500Medium",
-        interBold: "Inter_700Bold"
+        interBold: "Inter_700Bold",
+        interSemiBold: "Inter_600SemiBold"
       },
       colors: {
         blue: "#0052B4"
