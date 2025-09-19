@@ -13,7 +13,8 @@ module.exports = {
         interBold: "Inter_700Bold",
         interSemiBold: "Inter_600SemiBold",
         jakarSans: "PlusJakartaSans_500Medium",
-        albertSansBold: "AlbertSans_700Bold"
+        albertSansBold: "AlbertSans_700Bold",
+        albertSansLight: "AlbertSans_300Light"
       },
       colors: {
         blue: "#0052B4",
