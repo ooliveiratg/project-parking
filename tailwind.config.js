@@ -9,10 +9,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
-        inter: "Inter_500Medium"
+        inter: "Inter_500Medium",
+        interBold: "Inter_700Bold",
+        interSemiBold: "Inter_600SemiBold",
+        jakarSans: "PlusJakartaSans_500Medium",
+        albertSansBold: "AlbertSans_700Bold",
+        albertSansLight: "AlbertSans_300Light"
       },
       colors: {
-        blue: "#0052B4"
+        blue: "#0052B4",
+        blue400: "#4D81E7",
+        gray300: "#EDF1F3",
+        gray200: "#6C7278",
+        black500: "#0D0D0D"
       },
     },
   },

@@ -1,0 +1,16 @@
+import { StyleProp, ViewStyle } from "react-native";
+
+export interface InputTypes {
+  placeholder: string;
+  icon?: string;
+  border?:string;
+  iconPosition?: position;
+  shadow?: StyleProp<ViewStyle>;
+  iconName?: React.ReactNode;
+  bg?: string;
+}
+
+export enum position{
+  RIGHT = "RIGHT",
+  BOTH = "both",
+}
