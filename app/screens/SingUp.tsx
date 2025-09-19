@@ -7,6 +7,7 @@ import { useAppFonts } from "app/utils/fonts";
 import { Input } from "app/components/input";
 import { userFormData } from "app/utils/form";
 import { position } from "app/interfaces/components/input";
+
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
@@ -80,6 +81,7 @@ export default function SingUp() {
               gradient={true}
               width="min-w-full"
               height="h-[48px]"
+              onPress={() => router.replace("screens/Home")}
               Style={[
                 {
                   boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",

@@ -29,7 +29,7 @@ export default function SingIn() {
             <Input iconPosition={position.BOTH} bg="white" placeholder={"Digite sua senha"} icon="password" />
 
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
-              <Text className="text-white  border-b border-b-white text-[12px]">
+              <Text className="text-white font-inter border-b border-b-white text-[12px]">
                 {" "}
                 Esqueceu a senha?
               </Text>
@@ -45,6 +45,7 @@ export default function SingIn() {
               title={"Entrar"}
               gradient={true}
               width="min-w-full"
+              onPress={() => router.replace("screens/Home")}
               height="h-[48px]"
               Style={[
                 {

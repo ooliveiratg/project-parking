@@ -29,7 +29,7 @@ export function ButtonStyle({
               {typeof props.title === "string" ? <Text className={`font-inter text-white`}>{props.title}</Text> : props.title}
         </LinearGradient>
       ) : (
-          typeof props.title === "string" ? <Text className={`font-inter ${props.color} ${props.border}`}>{props.title}</Text> : props.title
+          typeof props.title === "string" ? <Text className={`font-inter text-[12px] ${props.color} ${props.border}`}>{props.title}</Text> : props.title
       )}
     </TouchableOpacity>
   );
