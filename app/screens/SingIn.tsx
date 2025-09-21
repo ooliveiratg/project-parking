@@ -15,7 +15,7 @@ export default function SingIn() {
   if(!fonts) return null
 
   return (
-    <SafeAreaView className="flex-1">
+    <View className="flex-1">
       <ImageBackground
         source={backgroundLogin}
         resizeMode="cover"
@@ -29,11 +29,6 @@ export default function SingIn() {
             <Input iconPosition={position.BOTH} bg="white" placeholder={"Digite sua senha"} icon="password" />
 
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
-              <Text className="text-white font-inter border-b border-b-white text-[12px]">
-                {" "}
-                Esqueceu a senha?
-              </Text>
-
               <ButtonStyle
                 onPress={() => router.replace("screens/SingUp")}
                 title={"Cadastre-se"}
@@ -60,6 +55,6 @@ export default function SingIn() {
           </View>
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 }
