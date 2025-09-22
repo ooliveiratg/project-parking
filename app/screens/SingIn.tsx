@@ -1,5 +1,5 @@
 import "nativewind";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View,Text } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
@@ -33,12 +33,15 @@ export default function SingIn() {
             />
 
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
+              <View>
               <ButtonStyle
                 onPress={() => router.replace("screens/SingUp")}
-                title={"Cadastre-se"}
-                color="text-white"
-                border="border-b border-white"
+                title={
+                    <Text className="text-white font-inter border-b border-white">Cadastre-se</Text>
+                }
+                
               ></ButtonStyle>
+              </View>
             </View>
             <ButtonStyle
               title={"Entrar"}

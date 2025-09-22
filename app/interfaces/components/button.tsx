@@ -5,8 +5,6 @@ export interface ButtonProps {
   title: ReactNode;
   icon?:boolean;
   width?:string;
-  color?: string;
-  border?: string;
   height?: string;
   onPress?: () => void;
   Style?: StyleProp<ViewStyle>;
