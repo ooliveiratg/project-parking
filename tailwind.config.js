@@ -10,10 +10,13 @@ module.exports = {
     extend: {
       fontFamily:{
         inter: "Inter_500Medium",
-        interBold: "Inter_700Bold"
+        interBold: "Inter_700Bold",
+        interSemiBold: "Inter_600SemiBold",
+        plusJarkataFonts: "PlusJakartaSans_500Medium"
       },
       colors: {
-        blue: "#0052B4"
+        blue: "#0052B4",
+        blue400: "#4D81E7"
       },
     },
   },

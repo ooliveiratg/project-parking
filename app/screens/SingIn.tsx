@@ -21,14 +21,18 @@ export default function SingIn() {
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
             <Input
+              icon={true}
               placeholder={"Digite seu email"}
               type="email"
-              className="bg-white"
+              className="h-[46px]  font-inter pl-[12px]"
+              classNameView="bg-white"
             />
             <Input
+            icon={true}
               placeholder={"Digite sua senha"}
               type="password"
-              className="bg-white"
+              classNameView="bg-white"
+              className="pl-[12px]"
             />
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
               <Text className="text-white  border-b border-b-white text-[12px]">
