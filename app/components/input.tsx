@@ -31,6 +31,7 @@ export function Input({ bg = "white", ...props }: InputTypes) {
 
         <TextInput
           placeholder={props.placeholder}
+          placeholderTextColor={props.textColorPlaceholder}
           secureTextEntry={visiblePassword}
           className={`h-[46px] flex-1  font-inter pl-[12px] `}
         />

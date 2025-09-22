@@ -1,10 +1,11 @@
 import { DataButtonsArray } from "app/utils/ArrayButtons";
-import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { Car } from "../../assets/images"
 
 export default function Home() {
+  const buttons = DataButtonsArray();
   return (
-    <SafeAreaView className="flex-1 flex-col bg-black500">
+    <View className="flex-1 flex-col bg-black500">
       <Text className="w-full flex mt-[59px] pl-[24px] pr-[24px] text-white font-albertSansBold text-[24px]">
         Hello, Muhammad
       </Text>
@@ -22,7 +23,7 @@ export default function Home() {
           }}
           className="pl-[33px]"
         >
-          {DataButtonsArray.map((button, index) => (
+          {buttons.map((button, index) => (
             <View
               key={button.name}
               className={index !== DataButtonsArray.length - 1 ? "mr-4" : ""}
@@ -33,6 +34,6 @@ export default function Home() {
         </ScrollView>
           <Image source={Car} className="justify-center self-center flex-1 mt-[53px] w-[214px] h-[338px]" />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

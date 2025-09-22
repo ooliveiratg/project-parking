@@ -13,7 +13,7 @@ export default function SingUp() {
   const [fonts] = useAppFonts();
   if (!fonts) return null;
   return (
-    <SafeAreaView className="flex-1">
+    <View className="flex-1">
       <ImageBackground
         source={backgroundLogin}
         resizeMode="cover"
@@ -94,6 +94,6 @@ export default function SingUp() {
               ]}></ButtonStyle>
               </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

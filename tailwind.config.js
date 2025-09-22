@@ -24,7 +24,12 @@ module.exports = {
         gray200: "#6C7278",
         black500: "#0D0D0D",
         gray600: "#D9D9D9",
-        black600: "#252525"
+        black600: "#252525",
+        black400: "#18191D",
+        white8: "rgba(255,255,255,0.08)",
+        blue400: "#23C2ED"
+
+        
       },
     },
   },

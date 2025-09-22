@@ -1,11 +1,10 @@
 import "nativewind";
-import { ImageBackground, SafeAreaView, Text, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
-import { LinearGradient } from "expo-linear-gradient";
 import { useAppFonts } from "app/utils/fonts";
 import { position } from "app/interfaces/components/input";
 
