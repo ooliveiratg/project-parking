@@ -1,17 +1,20 @@
 import "nativewind";
-import { ImageBackground, SafeAreaView, Text, View } from "react-native";
+import { ImageBackground, View,Text } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
-import { LinearGradient } from "expo-linear-gradient";
+import { useAppFonts } from "app/utils/fonts";
+import { position } from "app/interfaces/components/input";
 
 export default function SingIn() {
   const router = useRouter();
+  const [fonts] = useAppFonts();
+  if (!fonts) return null;
 
   return (
-    <SafeAreaView className="flex-1">
+    <View className="flex-1">
       <ImageBackground
         source={backgroundLogin}
         resizeMode="cover"
@@ -20,53 +23,46 @@ export default function SingIn() {
         <View className="flex-col justify-center items-center gap-[96px] flex-1 ">
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
-            <Input
-              icon={true}
-              placeholder={"Digite seu email"}
-              type="email"
-              className="h-[46px]  font-inter pl-[12px]"
-              classNameView="bg-white"
-            />
-            <Input
-            icon={true}
-              placeholder={"Digite sua senha"}
-              type="password"
-              classNameView="bg-white"
-              className="pl-[12px]"
-            />
-            <View className="flex-row justify-between mt-[24px] mb-[24px]">
-              <Text className="text-white  border-b border-b-white text-[12px]">
-                {" "}
-                Esqueceu a senha?
-              </Text>
+            <Input bg="white" placeholder={"Digite seu email"} icon="email" />
 
+            <Input
+              iconPosition={position.BOTH}
+              bg="white"
+              placeholder={"Digite sua senha"}
+              icon="password"
+            />
+
+            <View className="flex-row justify-between mt-[24px] mb-[24px]">
+              <View>
               <ButtonStyle
-                activeOpacity={0.7}
-                classNameText="text-white border-b border-b-white text-[12px]"
                 onPress={() => router.replace("screens/SingUp")}
-                title={"Cadastre-se"}
+                title={
+                    <Text className="text-white font-inter border-b border-white">Cadastre-se</Text>
+                }
+                
               ></ButtonStyle>
+              </View>
             </View>
-              <ButtonStyle
-                title={"Entrar"}
-                gradient={true}
-                classNameText="text-white font-inter text-[14px]"
-                classNameButton="min-w-full h-[48px] items-center justify-center rounded-[10px]"
-                Style={[
-                  {
-                    boxShadow:"0px 1px 2px 0px rgb(37,62,167,0.48)",
-                    shadowRadius: 10,
-                    
-                  },
-                  {
-                    boxShadow:"0px 0px 0px 1px #253EA7",
-                     shadowRadius: 10,
-                  },
-                ]}
-              ></ButtonStyle>
+            <ButtonStyle
+              title={"Entrar"}
+              gradient={true}
+              width="min-w-full"
+              onPress={() => router.replace("screens/Home")}
+              height="h-[48px]"
+              Style={[
+                {
+                  boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",
+                  shadowRadius: 10,
+                },
+                {
+                  boxShadow: "0px 0px 0px 1px #253EA7",
+                  shadowRadius: 10,
+                },
+              ]}
+            ></ButtonStyle>
           </View>
         </View>
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 }
