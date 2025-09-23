@@ -21,7 +21,9 @@ module.exports = {
         blue400: "#4D81E7",
         gray300: "#EDF1F3",
         gray200: "#6C7278",
-        black500: "#0D0D0D"
+        black500: "#0D0D0D",
+        gray400: "#D9D9D9",
+        gray800: "#252525"
       },
     },
   },
