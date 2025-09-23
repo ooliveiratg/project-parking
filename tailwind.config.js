@@ -28,7 +28,10 @@ module.exports = {
         black400: "#18191D",
         white8: "rgba(255,255,255,0.08)",
         blue300: "#23C2ED",
-        black500: "#1D1F24" 
+        black500: "#1D1F24",
+        blue500: "#1D61E7",
+        gray400: "#E4E4E4",
+        gray100: "#A7ADB7"
 
         
       },

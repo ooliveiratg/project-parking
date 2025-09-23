@@ -32,7 +32,7 @@ export default function Home() {
             </View>
           ))}
         </ScrollView>
-          <Image source={Car} resizeMode="contain" className="self-center mt-[53px] w-[214px] h-[338px]" />
+          <Image source={Car} className="justify-center self-center mt-[53px] w-[214px] h-[338px]" />
       </View>
     </View>
   );

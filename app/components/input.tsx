@@ -1,4 +1,4 @@
-import { TextInput, View } from "react-native";
+import { StyleProp, TextInput, View, ViewStyle } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { JSX, useState } from "react";
 import { ButtonStyle } from "./button";
