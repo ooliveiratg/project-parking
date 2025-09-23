@@ -5,7 +5,7 @@ import { Car } from "../../assets/images"
 export default function Home() {
   const buttons = DataButtonsArray();
   return (
-    <View className="flex-1 flex-col bg-black500">
+    <View className="flex-1 flex-col bg-black700">
       <Text className="w-full flex mt-[59px] pl-[24px] pr-[24px] text-white font-albertSansBold text-[24px]">
         Hello, Muhammad
       </Text>
@@ -32,7 +32,7 @@ export default function Home() {
             </View>
           ))}
         </ScrollView>
-          <Image source={Car} className="justify-center self-center flex-1 mt-[53px] w-[214px] h-[338px]" />
+          <Image source={Car} resizeMode="contain" className="self-center mt-[53px] w-[214px] h-[338px]" />
       </View>
     </View>
   );

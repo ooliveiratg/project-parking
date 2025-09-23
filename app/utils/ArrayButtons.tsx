@@ -41,7 +41,7 @@ export const DataButtonsArray = () => {
         name: "listagem",
         content:
 
-            <ButtonStyle width="w-[110px]" height="h-[124px]" title={
+            <ButtonStyle onPress={() => router.replace("screens/VehicleListing")} width="w-[110px]" height="h-[124px]" title={
                 <View className="flex-1 flex-col justify-center items-center gap-[20px] bg-black600 rounded-[20px]">
                     <MaterialIcons name="directions-car" color={"#D9D9D9"} size={50} />
                     <Text className="text-5 font-alberSansRegular text-white">
