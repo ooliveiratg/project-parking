@@ -9,6 +9,8 @@ export interface InputTypes {
   iconName?: React.ReactNode;
   bg?: string;
   textColorPlaceholder?: string;
+  onChange?: (text: string) => void;
+  value?: string;
 }
 
 export enum position{

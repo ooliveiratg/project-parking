@@ -1,4 +1,4 @@
-import { DataButtonsArray } from "app/utils/ArrayButtons";
+import { DataButtonsArray } from "../../utils/ArrayButtons";
 import { Image, ScrollView, Text, View } from "react-native";
 import { Car } from "../../assets/images"
 

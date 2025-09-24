@@ -1,11 +1,16 @@
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons";
+import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
 
 export default function VehicleListing() {
+    const router = useRouter()
   return (
     <View className="flex-1">
-      <View className="pl-[24px] w-full h-[223px] bg-black500 justify-center items-start">
+      <View className="pl-[24px] w-full h-[223px] gap-[16px] bg-black500 justify-center items-start">
+        <ButtonStyle icon onPress={() => router.replace("screens/Home")} title={
+      <MaterialIcons name="arrow-back" size={24} color={"white"}/>
+    }/>
         <Text className="font-interBold text-[48px] text-white">Veiculos</Text>
       </View>
       <View className="flex-1 bg-black700 justify-start ">
