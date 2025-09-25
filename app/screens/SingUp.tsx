@@ -1,11 +1,10 @@
 import { ImageBackground, SafeAreaView, Text, View } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import { ButtonStyle } from "app/components/button";
-import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons";
 import { useRouter } from "expo-router";
-import { useAppFonts } from "app/utils/fonts";
+import { useAppFonts } from "../../utils/fonts";
 import { Input } from "app/components/input";
-import { userFormData } from "app/utils/form";
+import { userFormData } from "../../utils/form";
 import { position } from "app/interfaces/components/input";
 
 export default function SingUp() {
