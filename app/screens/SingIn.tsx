@@ -1,17 +1,41 @@
 import "nativewind";
-import { ImageBackground, View,Text } from "react-native";
+import { ImageBackground, View, Text } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
-import { useAppFonts } from "app/utils/fonts";
+import { useAppFonts } from "../../utils/fonts";
 import { position } from "app/interfaces/components/input";
+import { Login } from "services/Login";
+import React, { useState } from 'react';
 
 export default function SingIn() {
   const router = useRouter();
   const [fonts] = useAppFonts();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   if (!fonts) return null;
+
+  const handleLogin = async () => {
+    try {
+      const response = await Login({email, senha:password})
+      
+      if(response?.success) {
+        console.log("Login realizado com sucesso!");
+        router.replace("screens/Home");
+      } else {
+        // Exibir erro para o usuário
+        console.error("Erro no login:", response?.message || "Erro desconhecido");
+        // Aqui você pode mostrar um Alert ou Toast para o usuário
+        // Alert.alert("Erro", response?.message || "Erro ao fazer login");
+      }
+    } catch (error) {
+      console.error("Erro inesperado ao fazer login:", error);
+      // Alert.alert("Erro", "Ocorreu um erro inesperado. Tente novamente.");
+    }
+  }
+
 
   return (
     <View className="flex-1">
@@ -23,31 +47,37 @@ export default function SingIn() {
         <View className="flex-col justify-center items-center gap-[96px] flex-1 ">
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
-            <Input bg="white" placeholder={"Digite seu email"} icon="email" />
+            <Input bg="white" placeholder={"Digite seu email"} icon="email"
+              onChange={(text) => setEmail(text)}
+              value={email}
+            />
 
             <Input
               iconPosition={position.BOTH}
               bg="white"
               placeholder={"Digite sua senha"}
               icon="password"
+              onChange={(text) => setPassword(text)}
+              value={password}
+
             />
 
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
               <View>
-              <ButtonStyle
-                onPress={() => router.replace("screens/SingUp")}
-                title={
+                <ButtonStyle
+                  onPress={() => router.replace("screens/SingUp")}
+                  title={
                     <Text className="text-white font-inter border-b border-white">Cadastre-se</Text>
-                }
-                
-              ></ButtonStyle>
+                  }
+
+                ></ButtonStyle>
               </View>
             </View>
             <ButtonStyle
               title={"Entrar"}
               gradient={true}
               width="min-w-full"
-              onPress={() => router.replace("screens/Home")}
+              onPress={() => handleLogin()}
               height="h-[48px]"
               Style={[
                 {

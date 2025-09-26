@@ -1,17 +1,34 @@
 import { ImageBackground, SafeAreaView, Text, View } from "react-native";
 import { backgroundLogin } from "../../assets/images";
 import { ButtonStyle } from "app/components/button";
-import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons";
 import { useRouter } from "expo-router";
-import { useAppFonts } from "app/utils/fonts";
+import { useAppFonts } from "../../utils/fonts";
 import { Input } from "app/components/input";
-import { userFormData } from "app/utils/form";
+import { Register } from "../../services/Register";
+import { userFormData } from "../../utils/form";
 import { position } from "app/interfaces/components/input";
-
+import React, { useState } from 'react';
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
+  const [firstName, setFirstName] =useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   if (!fonts) return null;
+  
+  const handleRegister =  () => {
+
+    const nome = `${firstName.trim()} ${lastName.trim()}`
+    console.log(nome, email, password)
+    
+    try{
+      const response = Register({ name:nome, email, senha:password })
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <View className="flex-1">
       <ImageBackground
@@ -48,6 +65,8 @@ export default function SingUp() {
               placeholder={"Nome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
+              onChange={(text) => setFirstName(text)}
+              value={firstName}
             />
           </View>
 
@@ -59,6 +78,8 @@ export default function SingUp() {
               placeholder={"Sobrenome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
+              onChange={(text) => setLastName(text)}
+              value={lastName}
             />
           </View>
         </View>
@@ -73,7 +94,10 @@ export default function SingUp() {
               icon={form.type}
               iconPosition={position.RIGHT}
               border="border border-gray300"
-              shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }} />
+              shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }} 
+              {...(form.type === "Email" ? { onChange: (text) => setEmail(text) } : (form.type === "password" ? { onChange: (text) => setPassword(text) } : {}))}
+              {...(form.type === "Email" ? { value: email } : (form.type === "password" ? { value: password } : {}))}
+              />
             </View>
           ))}
         </View>
@@ -83,7 +107,7 @@ export default function SingUp() {
               gradient={true}
               width="min-w-full"
               height="h-[48px]"
-              onPress={() => router.replace("screens/Home")}
+              onPress={() => handleRegister()}
               Style={[
                 {
                   boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",

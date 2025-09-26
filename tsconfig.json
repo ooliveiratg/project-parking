@@ -17,7 +17,7 @@
     "nativewind-env.d.ts",
     "svg.d.ts",
     "./types/image.d.ts"
-
-  ],
+, "validations"
+, "utils"  ],
   "extends": "expo/tsconfig.base"
 }

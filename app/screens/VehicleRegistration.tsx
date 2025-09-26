@@ -3,7 +3,7 @@ import { BackgroundVehicle } from "../../assets/images";
 import { Input } from "app/components/input";
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useRouter } from "node_modules/expo-router/build";
+import { useRouter } from "expo-router";
 
 export default function VehicleRegistration() {
   const router = useRouter()
