@@ -6,8 +6,7 @@ import { useAppFonts } from "../../utils/fonts";
 import { Input } from "app/components/input";
 import { userFormData } from "../../utils/form";
 import { position } from "app/interfaces/components/input";
-import { useState } from "node_modules/@types/react";
-
+import React, { useState } from 'react';
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
@@ -15,7 +14,18 @@ export default function SingUp() {
   const [lastName, setLastName] = useState("")
   if (!fonts) return null;
   
-  
+  const handleRegister = async () => {
+    
+    const nome = firstName + lastName
+    console.log(nome)
+    
+    try{
+      // const response = await Register()
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <View className="flex-1">
       <ImageBackground

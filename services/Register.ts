@@ -3,7 +3,7 @@ import { validationRegisterType } from "../types/typesOfZod"
 import { ZodValidate } from "../utils/zodValidationUtil";
 import { LoginSchema } from "../validations/validation-zod";
 
-export async function Login(data: validationRegisterType) {
+export async function Register(data: validationRegisterType) {
     try {
         const result = ZodValidate(LoginSchema,data)
         if(!result.success) {
