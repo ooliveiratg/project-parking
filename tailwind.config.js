@@ -14,16 +14,26 @@ module.exports = {
         interSemiBold: "Inter_600SemiBold",
         jakarSans: "PlusJakartaSans_500Medium",
         albertSansBold: "AlbertSans_700Bold",
-        albertSansLight: "AlbertSans_300Light"
+        albertSansLight: "AlbertSans_300Light",
+        alberSansRegular: "AlbertSans_400Regular"
       },
       colors: {
         blue: "#0052B4",
         blue400: "#4D81E7",
         gray300: "#EDF1F3",
         gray200: "#6C7278",
-        black500: "#0D0D0D",
-        gray400: "#D9D9D9",
-        gray800: "#252525"
+        black700: "#0D0D0D",
+        gray600: "#D9D9D9",
+        black600: "#252525",
+        black400: "#18191D",
+        white8: "rgba(255,255,255,0.08)",
+        blue300: "#23C2ED",
+        black500: "#1D1F24",
+        blue500: "#1D61E7",
+        gray400: "#E4E4E4",
+        gray100: "#A7ADB7"
+
+        
       },
     },
   },

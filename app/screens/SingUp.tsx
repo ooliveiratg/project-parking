@@ -13,7 +13,7 @@ export default function SingUp() {
   const [fonts] = useAppFonts();
   if (!fonts) return null;
   return (
-    <SafeAreaView className="flex-1">
+    <View className="flex-1">
       <ImageBackground
         source={backgroundLogin}
         resizeMode="cover"
@@ -23,15 +23,17 @@ export default function SingUp() {
           Cadastro
         </Text>
 
-        <View className="flex-row pt-[8px] gap-[6px]">
+        <View className="flex-row pt-[8px] gap-[6px] items-center ">
           <Text className="font-inter text-white text-[12px]">
             Já tem uma conta?
           </Text>
           <ButtonStyle
             onPress={() => router.replace("screens/SingIn")}
-            color="text-blue400"
-            border="border-b border-blue400"
-            title={"Log In"}
+            title={
+              <Text className="text-blue400 border-b border-blue400 font-interSemiBold">
+                Log In
+              </Text>
+            }
           />
         </View>
       </ImageBackground>
@@ -94,6 +96,6 @@ export default function SingUp() {
               ]}></ButtonStyle>
               </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

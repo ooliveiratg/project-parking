@@ -1,4 +1,4 @@
-import { TextInput, View } from "react-native";
+import { StyleProp, TextInput, View, ViewStyle } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { JSX, useState } from "react";
 import { ButtonStyle } from "./button";
@@ -31,6 +31,7 @@ export function Input({ bg = "white", ...props }: InputTypes) {
 
         <TextInput
           placeholder={props.placeholder}
+          placeholderTextColor={props.textColorPlaceholder}
           secureTextEntry={visiblePassword}
           className={`h-[46px] flex-1  font-inter pl-[12px] `}
         />

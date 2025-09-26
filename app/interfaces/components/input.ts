@@ -8,6 +8,7 @@ export interface InputTypes {
   shadow?: StyleProp<ViewStyle>;
   iconName?: React.ReactNode;
   bg?: string;
+  textColorPlaceholder?: string;
 }
 
 export enum position{
