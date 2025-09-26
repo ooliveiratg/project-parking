@@ -6,11 +6,16 @@ import { useAppFonts } from "../../utils/fonts";
 import { Input } from "app/components/input";
 import { userFormData } from "../../utils/form";
 import { position } from "app/interfaces/components/input";
+import { useState } from "node_modules/@types/react";
 
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
+  const [firstName, setFirstName] =useState("")
+  const [lastName, setLastName] = useState("")
   if (!fonts) return null;
+  
+  
   return (
     <View className="flex-1">
       <ImageBackground
@@ -47,6 +52,8 @@ export default function SingUp() {
               placeholder={"Nome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
+              onChange={(text) => setFirstName(text)}
+              value={firstName}
             />
           </View>
 
@@ -58,6 +65,8 @@ export default function SingUp() {
               placeholder={"Sobrenome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
+              onChange={(text) => setLastName(text)}
+              value={lastName}
             />
           </View>
         </View>
