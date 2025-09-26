@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const api = axios.create({
-    baseURL: "http://localhost:8081",
+export const api = axios.create({
+    baseURL: "https://parking-api-9rj9.onrender.com",
     timeout: 1000
 })
