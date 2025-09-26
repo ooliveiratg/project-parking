@@ -24,6 +24,7 @@ export default function SingUp() {
     
     try{
       const response = Register({ name:nome, email, senha:password })
+      return response
     }catch(error){
       console.log(error)
     }

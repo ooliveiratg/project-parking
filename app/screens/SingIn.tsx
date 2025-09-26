@@ -20,19 +20,10 @@ export default function SingIn() {
   const handleLogin = async () => {
     try {
       const response = await Login({email, senha:password})
-      
-      if(response?.success) {
-        console.log("Login realizado com sucesso!");
-        router.replace("screens/Home");
-      } else {
-        // Exibir erro para o usuário
-        console.error("Erro no login:", response?.message || "Erro desconhecido");
-        // Aqui você pode mostrar um Alert ou Toast para o usuário
-        // Alert.alert("Erro", response?.message || "Erro ao fazer login");
-      }
+        if(response) return router.replace("screens/Home") 
     } catch (error) {
-      console.error("Erro inesperado ao fazer login:", error);
-      // Alert.alert("Erro", "Ocorreu um erro inesperado. Tente novamente.");
+      console.error("Erro ao fazer login:", error);
+      throw error
     }
   }
 

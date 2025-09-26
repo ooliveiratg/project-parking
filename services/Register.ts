@@ -1,11 +1,11 @@
 import {api} from "./baseURL"
 import { validationRegisterType } from "../types/typesOfZod"
 import { ZodValidate } from "../utils/zodValidationUtil";
-import { LoginSchema } from "../validations/validation-zod";
+import { RegisterSchema } from "../validations/validation-zod";
 
 export async function Register(data: validationRegisterType) {
     try {
-        const result = ZodValidate(LoginSchema,data)
+        const result = ZodValidate(RegisterSchema,data)
         if(!result.success) {
             console.error(result.error.flatten())
             return;
@@ -16,8 +16,8 @@ export async function Register(data: validationRegisterType) {
             senha: data.senha
         })
         return response
-    } catch (error) {
-        console.error("Register error:", error);
+    } catch (error:any) {
+        console.error("Register error:", error.message);
         throw error
     }
 }
