@@ -17,13 +17,13 @@ export default function SingUp() {
   const [password, setPassword] = useState("")
   if (!fonts) return null;
   
-  const handleRegister =  () => {
+  const handleRegister =  async () => {
 
     const nome = `${firstName.trim()} ${lastName.trim()}`
     console.log(nome, email, password)
     
     try{
-      const response = Register({ name:nome, email, senha:password })
+      const response = await Register({ name:nome, email, senha:password })
       return response
     }catch(error){
       console.log(error)
