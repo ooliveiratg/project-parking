@@ -2,6 +2,7 @@ import {api} from "./baseURL"
 import { validationZodType } from "../types/typesOfZod"
 import { ZodValidate } from "../utils/zodValidationUtil";
 import { LoginSchema } from "../validations/validation-zod";
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export async function Login(data: validationZodType) {
     try {
@@ -14,7 +15,8 @@ export async function Login(data: validationZodType) {
             email: data.email,
             senha: data.senha
         })
-        return response.data.token
+        await AsyncStorage.setItem("token",response.data.token)
+        return true
     } catch (error:any) {
         return console.error("Login error:", error.message || error.data);
 
