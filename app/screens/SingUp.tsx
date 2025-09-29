@@ -8,6 +8,7 @@ import { Register } from "../../services/Register";
 import { userFormData } from "../../utils/form";
 import { position } from "app/interfaces/components/input";
 import React, { useState } from 'react';
+import { Login } from "services/Login";
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
@@ -24,7 +25,13 @@ export default function SingUp() {
     
     try{
       const response = await Register({ name:nome, email, senha:password })
-      return response
+       if(response){
+          const responseToken = await Login({email,senha:password })
+          responseToken?  router.replace("screens/Home") :  console.log("Não foi possível logar");
+                    
+        }else {
+    console.log("Não foi possível cadastrar");
+  }
     }catch(error){
       console.log(error)
     }

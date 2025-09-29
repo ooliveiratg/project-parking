@@ -15,7 +15,7 @@ export async function Register(data: validationRegisterType) {
             email: data.email,
             senha: data.senha
         })
-        console.log(response.data)
+         return response.data
     } catch (error:any) {
         console.error("Register error:", error.message || error.data);
         throw error

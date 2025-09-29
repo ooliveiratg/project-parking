@@ -14,10 +14,9 @@ export async function Login(data: validationZodType) {
             email: data.email,
             senha: data.senha
         })
-        return response
-    } catch (error) {
-        console.log
-        console.error("Login error:", error);
-        throw error
+        return response.data.token
+    } catch (error:any) {
+        return console.error("Login error:", error.message || error.data);
+
     }
 }

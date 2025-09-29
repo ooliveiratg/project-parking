@@ -25,14 +25,14 @@ export function Input({ bg = "white", ...props }: InputTypes) {
       style={props.shadow}
     >
       
-      <View className="flex-row items-center  flex-1">
+      <View className="flex-row items-center  pl-[10px] flex-1">
        {(props.iconPosition === position.BOTH  || props.icon === "email")&&
           (iconsMap[props.icon as keyof typeof iconsMap] ?? props.iconName)}
 
         <TextInput
           placeholder={props.placeholder}
           placeholderTextColor={props.textColorPlaceholder}
-          secureTextEntry={visiblePassword}
+          secureTextEntry={props.icon ==="password"&& !visiblePassword}
           className={`h-[46px] flex-1  font-inter pl-[12px] `}
           onChangeText={props.onChange}
           value={props.value}
@@ -50,7 +50,7 @@ export function Input({ bg = "white", ...props }: InputTypes) {
           onPress={() => setVisiblePassword(!visiblePassword)}
           title={
             <MaterialIcons
-              name={visiblePassword ? "visibility-off" : "visibility"}
+              name={!visiblePassword ? "visibility-off" : "visibility"}
               color={"#ACB5BB"}
               size={16}
             />
