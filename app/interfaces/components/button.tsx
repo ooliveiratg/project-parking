@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+
 import { StyleProp, ViewStyle } from "react-native";
 
 export interface ButtonProps {
-  title: ReactNode;
+  title: React.ReactNode;
   icon?:boolean;
   width?:string;
   height?: string;

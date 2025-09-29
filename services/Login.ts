@@ -1,6 +1,6 @@
 import {api} from "./baseURL"
 import { validationZodType } from "../types/typesOfZod"
-import { ZodValidate } from "../utils/zodValidationUtil";
+import { ZodValidate } from "../app/utils/zodValidationUtil";
 import { LoginSchema } from "../validations/validation-zod";
 import AsyncStorage from "@react-native-async-storage/async-storage"
 

@@ -25,7 +25,7 @@ export default function Index() {
     opacity.value = withTiming(0, { duration: 3000 });
     const timer = setTimeout(() => {
       console.log("SplashScreen escondida");
-      router.replace("/screens/SingIn");
+      router.replace("/screens/Home");
     }, 3000);
     return () => clearTimeout(timer);
   });

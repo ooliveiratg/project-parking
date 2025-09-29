@@ -1,6 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity, Text } from "react-native";
 import { ButtonProps } from "../interfaces/components/button";
+
 export function ButtonStyle({
   icon = false,
   gradient = false,
@@ -26,18 +27,18 @@ export function ButtonStyle({
           style={{ borderRadius: 10 }}
         >
           {typeof props.title === "string" ? (
-            <Text className={`font-inter text-white`}>{props.title}</Text>
+            <Text className="font-inter text-white">{props.title}</Text>
           ) : (
-            typeof props.title === "string" ? (
-          <Text className="font-inter text-white">{props.title}</Text>
-        ): (
-          props.title
-        )
+            props.title
           )}
         </LinearGradient>
       ) : (
-            props.title
-          )}
+        typeof props.title === "string" ? (
+          <Text className="font-inter text-white">{props.title}</Text>
+        ) : (
+          props.title
+        )
+      )}
     </TouchableOpacity>
   );
 }

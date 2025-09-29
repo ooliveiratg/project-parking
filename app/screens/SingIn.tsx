@@ -5,7 +5,7 @@ import Logo from "../../assets/svg/Logo-white.svg";
 import { Input } from "app/components/input";
 import { useRouter } from "expo-router";
 import { ButtonStyle } from "app/components/button";
-import { useAppFonts } from "../../utils/fonts";
+import { useAppFonts } from "../utils/fonts";
 import { position } from "app/interfaces/components/input";
 import { Login } from "services/Login";
 import React, { useState } from 'react';

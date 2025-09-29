@@ -3,7 +3,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { JSX, useState } from "react";
 import { ButtonStyle } from "./button";
 import { InputTypes, position } from "app/interfaces/components/input";
-import { iconsMap } from "../../utils/iconsMap";
+import { iconsMap } from "../utils/iconsMap";
 
 export function Input({ bg = "white", ...props }: InputTypes) {
   const [visiblePassword, setVisiblePassword] = useState(false);

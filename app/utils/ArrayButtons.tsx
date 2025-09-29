@@ -1,23 +1,25 @@
-import { ButtonStyle } from "../app/components/button"
-import { MaterialIcons } from "@expo/vector-icons"
+import { ButtonStyle } from "app/components/button"
+import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons"
 import { View, Text } from "react-native"
-import type { Router } from "expo-router"
+import { useRouter } from "expo-router"
 
 
 
-export function DataButtonsArray(router: Router) {
+export const DataButtonsArray = () => {
+    const router = useRouter()
+
     return[
     {
         name: "cadastro",
         content:
-           <View className="w-[110px] h-[124px]">
+            <ButtonStyle width="w-[110px]" height="h-[124px]" onPress={() => router.replace("screens/VehicleRegistration")} title={
                 <View className="flex-1 flex-col justify-center items-center gap-[20px] bg-black600 rounded-[20px]">
                     <MaterialIcons name="add" color={"#D9D9D9"} size={50} />
-                    <Text className="text-5 font-alberSansRegular text-white">
+                    <Text className="text-5 font-alberSansRegular text-white ">
                         Cadastro
                     </Text>
                 </View>
-            </View>
+            } />
     },
 
     {

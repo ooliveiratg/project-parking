@@ -1,6 +1,6 @@
 import {api} from "./baseURL"
 import { validationRegisterType } from "../types/typesOfZod"
-import { ZodValidate } from "../utils/zodValidationUtil";
+import { ZodValidate } from "../app/utils/zodValidationUtil";
 import { RegisterSchema } from "../validations/validation-zod";
 
 export async function Register(data: validationRegisterType) {

@@ -1,13 +1,10 @@
-import { ScrollView, View } from "react-native";
-import { DataButtonsArray } from "../../utils/ArrayButtons";
-import { useRouter } from "expo-router";
+import { ScrollView, Text, View } from "react-native";
+import { DataButtonsArray } from "../utils/ArrayButtons";
+
 
 export function Card() {
-  const router = useRouter();
-  const buttons = DataButtonsArray(router);
-  console.log('Card renderizado!');
-  console.log('Número de botões:', buttons.length);
-  console.log('Buttons:', buttons);
+  const buttons = DataButtonsArray()
+
 
   return (
     
@@ -17,6 +14,7 @@ export function Card() {
         contentContainerStyle={{
           paddingLeft: 64,
           paddingRight: 55,
+          height: 140,
         }}
         className="pl-[33px] h-[140px]"
       >
