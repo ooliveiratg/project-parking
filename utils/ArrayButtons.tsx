@@ -5,19 +5,19 @@ import type { Router } from "expo-router"
 
 
 
-export const DataButtonsArray = (router: Router) => {
+export function DataButtonsArray(router: Router) {
     return[
     {
         name: "cadastro",
         content:
-            <ButtonStyle width="w-[110px]" height="h-[124px]" onPress={() => router.replace("screens/VehicleRegistration")} title={
+           <View className="w-[110px] h-[124px]">
                 <View className="flex-1 flex-col justify-center items-center gap-[20px] bg-black600 rounded-[20px]">
                     <MaterialIcons name="add" color={"#D9D9D9"} size={50} />
-                    <Text className="text-5 font-alberSansRegular text-white ">
+                    <Text className="text-5 font-alberSansRegular text-white">
                         Cadastro
                     </Text>
                 </View>
-            } />
+            </View>
     },
 
     {
