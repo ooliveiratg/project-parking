@@ -9,7 +9,6 @@ import { useAppFonts } from "../../utils/fonts";
 import { position } from "app/interfaces/components/input";
 import { Login } from "services/Login";
 import React, { useState } from 'react';
-import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export default function SingIn() {
   const router = useRouter();
@@ -22,8 +21,6 @@ export default function SingIn() {
     try {
       const response = await Login({email, senha:password})
         if(response){
-          const token = await AsyncStorage.getItem("token")
-          console.log(token)
           router.replace("screens/Home")
         }else {
     console.log("Não foi possível logar");

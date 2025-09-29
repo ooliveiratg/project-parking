@@ -1,13 +1,11 @@
-import { ButtonStyle } from "app/components/button"
-import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons"
+import { ButtonStyle } from "../app/components/button"
+import { MaterialIcons } from "@expo/vector-icons"
 import { View, Text } from "react-native"
-import { useRouter } from "expo-router"
+import type { Router } from "expo-router"
 
 
 
-export const DataButtonsArray = () => {
-    const router = useRouter()
-
+export const DataButtonsArray = (router: Router) => {
     return[
     {
         name: "cadastro",

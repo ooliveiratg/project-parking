@@ -1,6 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { TouchableOpacity, Text, View } from "react-native";
-
+import { TouchableOpacity, Text } from "react-native";
 import { ButtonProps } from "../interfaces/components/button";
 export function ButtonStyle({
   icon = false,
@@ -18,7 +17,7 @@ export function ButtonStyle({
       activeOpacity={0.8}
       style={props.Style}
     >
-      {gradient === true ? (
+      {gradient ? (
         <LinearGradient
           colors={["#4A90E2", "#1D61E7"]}
           start={{ x: 0, y: 0 }}
@@ -29,7 +28,11 @@ export function ButtonStyle({
           {typeof props.title === "string" ? (
             <Text className={`font-inter text-white`}>{props.title}</Text>
           ) : (
-            props.title
+            typeof props.title === "string" ? (
+          <Text className="font-inter text-white">{props.title}</Text>
+        ): (
+          props.title
+        )
           )}
         </LinearGradient>
       ) : (
