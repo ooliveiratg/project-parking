@@ -15,8 +15,8 @@ export async function Login(data: validationZodType) {
             email: data.email,
             senha: data.senha
         })
-        await AsyncStorage.setItem("token",response.data.token)
-        return true
+       const token = await AsyncStorage.setItem("token",response.data.token)
+        return token
     } catch (error:any) {
         return console.error("Login error:", error.message || error.data);
 

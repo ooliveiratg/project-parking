@@ -6,16 +6,23 @@ import { useRouter } from "node_modules/expo-router/build";
 
 export default function Home() {
   const router = useRouter()
+  
+  const handleValidateToken = async () => {
  try{
-  const token = AsyncStorage.getItem("token")
+  const token = await AsyncStorage.getItem("token")
+  const responseToken = token
+  console.log("Token não encontrado:", token);
   if(!token){
     console.log("Token não encontrado:", token);
     router.replace("screens/SingIn")
   }
-  
+  return responseToken
  }catch(error){
   console.log(error)
  }
+ }
+ handleValidateToken()
+ 
   return (
     <View className="flex-1 flex-col bg-black700">
       <Text className="w-full flex mt-[59px] pl-[24px] pr-[24px] text-white font-albertSansBold text-[24px]">
@@ -30,8 +37,6 @@ export default function Home() {
         <Card/>
         <Image source={Car} className="justify-center self-center mt-[53px] w-[214px] h-[338px]" />
       </View>
-      
-
     </View>
   );
 }
