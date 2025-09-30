@@ -26,9 +26,8 @@ export default function SingUp() {
     try{
       const response = await Register({ name:nome, email, senha:password })
        if(response){
-          const responseToken = await Login({email,senha:password })
-          responseToken?  router.replace("screens/Home") :  console.log("Não foi possível logar");
-                    
+        await Login({email,senha:password })
+        router.replace("screens/Home") 
         }else {
     console.log("Não foi possível cadastrar");
   }

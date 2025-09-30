@@ -9,7 +9,7 @@ type usernameZustand = {
   fetchUser: () => Promise<void>;
 };
 
-export const UsernameState = create(
+export const usernameState = create(
   persist<usernameZustand>((set, get) => ({
     username: null,
     token: null,
@@ -26,7 +26,7 @@ export const UsernameState = create(
         })
         const data = await res.json()
         set({username: data.nome})
-        console.log(res)
+
       } catch (error) {
         console.log(error);
       }
