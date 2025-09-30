@@ -10,7 +10,7 @@ export async function Login(data: validationZodType) {
     
     try {
         const result = ZodValidate(LoginSchema,data)
-        if(!result.success) {
+        if(!result.success === true) {
             console.error(result.error.flatten())
             return;
         }
@@ -18,10 +18,9 @@ export async function Login(data: validationZodType) {
             email: data.email,
             senha: data.senha
         })
-       
-        return usernameState.getState().setToken( response.data.token )
+       usernameState.getState().setToken( response.data.token )
+        return { success: true, response: response.data.token }
     } catch (error:any) {
-     console.error("Login error:", error.message || error.data);
-
+     return { success: false, error: error.message || error.data }
     }
 }

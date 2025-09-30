@@ -19,8 +19,10 @@ export default function SingIn() {
 
   const handleLogin = async () => {
     try {
-      await Login({email, senha:password})
-          router.replace("screens/Home")
+       const result = await Login({email, senha:password})
+       if(result?.success === true){
+        return router.replace("screens/Home")
+       } 
     } catch (error) {
       console.error("Erro ao fazer login:", error);
     }

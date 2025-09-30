@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 type usernameZustand = {
   username: string | null;
   token: string | null;
-  setToken: (token: string) => void;
+  setToken: (token: string | null) => void;
   setUsername: (name: string) => void;
   fetchUser: () => Promise<void>;
 };
