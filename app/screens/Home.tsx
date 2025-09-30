@@ -6,8 +6,6 @@ import { usernameState } from "../store/username";
 
 export default function Home() {
 const  { token,fetchUser,username } = usernameState()
-console.log(token)
-console.log(username)
   useEffect(() => {
     if(token){ 
       fetchUser()

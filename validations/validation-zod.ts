@@ -10,3 +10,7 @@ export const RegisterSchema = z.object({
     email: z.string().email("Email inválido"),
     senha: z.string().min(6, "Senha deve ter no mínimo 6 caracteres")
 })
+
+export const VehicleRegister = z.object({
+    placa: z.string().max(7,"placa inválida").min(7, "placa inválida")
+})
