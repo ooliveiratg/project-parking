@@ -21,13 +21,14 @@ export default function SingUp() {
   const handleRegister =  async () => {
 
     const nome = `${firstName.trim()} ${lastName.trim()}`
-    console.log(nome, email, password)
     
     try{
       const response = await Register({ name:nome, email, senha:password })
-       if(response){
-        await Login({email,senha:password })
-        router.replace("screens/Home") 
+       if(response?.success === true){
+        const result = await Login({email,senha:password })
+        if(result?.success === true){
+        return router.replace("screens/Home")
+       } 
         }else {
     console.log("Não foi possível cadastrar");
   }

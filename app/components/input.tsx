@@ -33,7 +33,7 @@ export function Input({ bg = "white", ...props }: InputTypes) {
           placeholder={props.placeholder}
           placeholderTextColor={props.textColorPlaceholder}
           secureTextEntry={props.icon ==="password"&& !visiblePassword}
-          className={`h-[46px] flex-1  font-inter pl-[12px] `}
+          className={`h-[46px] ${props.Textcolor}  flex-1  font-inter pl-[12px] `}
           onChangeText={props.onChange}
           value={props.value}
         />

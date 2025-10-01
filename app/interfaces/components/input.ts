@@ -11,6 +11,7 @@ export interface InputTypes {
   textColorPlaceholder?: string;
   onChange?: (text: string) => void;
   value?: string;
+  Textcolor?: string
 }
 
 export enum position{
