@@ -15,7 +15,7 @@ export async function Register(data: validationRegisterType) {
             email: data.email,
             senha: data.senha
         })
-         return { success: true, response: response.data }
+         return { success: true, response: response }
     } catch (error:any) {
         return { success: false, error: error.message || error.data }
     }

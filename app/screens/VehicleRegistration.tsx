@@ -4,23 +4,27 @@ import { Input } from "app/components/input";
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { VehicleRegistrationApi } from "services/VehicleRegistration"
+import { VehicleRegistrationApi } from "../../services/vehicleRegistration"
 import React, { useState } from 'react';
+import { usernameState } from "app/store/username";
  
 export default function VehicleRegistration() {
   const router = useRouter();
  const [placa, setPlaca] = useState("")
+
   const handleRegisterVehicle = async () => {
     try {
-      const result = await VehicleRegistrationApi({placa: placa});
-      if (result?.succes === true) {
+        const token = await usernameState.getState().token
+        if (!token) return console.error("Error com o token");
+      const result = await VehicleRegistrationApi({placa}, token);
+      if(result?.success === true) {
         return router.replace("screens/Home");
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
     }
   };
-  return (
+   return (
     <ImageBackground
       source={BackgroundVehicle}
       className="flex-1 bg-black400 justify-center items-start pl-[32px] pr-[32px]"
@@ -47,6 +51,7 @@ export default function VehicleRegistration() {
           />
 
           <ButtonStyle
+          onPress={() => handleRegisterVehicle()}
             title={
               <View className="bg-blue300 items-center justify-center rounded-[12px] h-[48px]">
                 <Text className="font-interSemiBold text-4 text-white">
