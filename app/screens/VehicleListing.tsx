@@ -5,6 +5,7 @@ import { View, Text } from "react-native";
 
 export default function VehicleListing() {
     const router = useRouter()
+    
   return (
     <View className="flex-1">
       <View className="pl-[24px] w-full h-[223px] gap-[16px] bg-black500 justify-center items-start">

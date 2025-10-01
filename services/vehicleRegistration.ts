@@ -1,13 +1,14 @@
-import { validationRegisterVehicleType } from "../types/typesOfZod";
+import { validationVehicleType } from "../types/typesOfZod";
 import { ZodValidate } from "../app/utils/zodValidationUtil";
-import { VehicleRegisterSchema } from "../validations/validation-zod";
+import { VehicleSchema } from "../validations/validation-zod";
 import { api } from "./baseURL";
 
-export async function VehicleRegistrationApi(data: validationRegisterVehicleType, token: string) {
+export async function VehicleRegistrationApi(data: validationVehicleType, token: string) {
 
   
   try {
-    const result = ZodValidate(VehicleRegisterSchema, data);
+    const result = ZodValidate(VehicleSchema, data);
+    console.log(result)
     if (!result.success) {
       console.error(result.error.flatten());
       return;
