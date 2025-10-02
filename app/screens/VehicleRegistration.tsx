@@ -4,7 +4,7 @@ import { Input } from "app/components/input";
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { VehicleRegistrationApi } from "../../services/VehicleRegistration"
+import { VehicleRegistrationApi } from "../../services/vehicleRegistration"
 import React, { useState } from 'react';
 import { usernameState } from "app/store/username";
  
