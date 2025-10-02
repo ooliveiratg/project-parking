@@ -13,7 +13,7 @@ export async function VehicleRegistrationApi(data: validationVehicleType, token:
       console.error(result.error.flatten());
       return;
     }
-
+    
     const response = await api.post("/api/veiculos/entrada", {
       placa: data.placa,
       Headers: {

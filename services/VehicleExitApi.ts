@@ -13,7 +13,7 @@ export async function VehicleExitApi(data: validationVehicleType, token: string)
       return;
     }
 
-    const response = await api.post("/api/veiculos/entrada", {
+    const response = await api.put("/api/veiculos/saida", {
       placa: data.placa,
       Headers: {
         Authorization: `Bearer ${token}`,

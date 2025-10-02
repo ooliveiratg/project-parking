@@ -3,23 +3,32 @@ import { router, useRouter } from "expo-router";
 import { View, Text } from "react-native";
 import { VehicleListingApi } from "services/VehicleListingApi";
 import { ButtonStyle } from "app/components/button";
+import React, { useEffect,useState } from "react"
+
+interface VehicleData {
+  placa: string;
+  dataEntrada: string;
+  horarioEntrada: string;
+}
 
 export default function VehicleListing() {
   const router = useRouter();
-  const [vehicles,setVehicles] = 
+  const [vehicle, setVehicle] = useState<VehicleData[] | undefined>()
 
+  useEffect(() => {
   const handleListingVehicle = async () => {
     try {
       const result = await VehicleListingApi();
-      if(result){
-        
-      }
+      setVehicle(result.response)
     } catch (error) {
       console.error("Erro ao fazer login:", error);
     }
-  }; 
-
+  };
   handleListingVehicle();
+  },[])
+
+
+  
 
   return (
     <View className="flex-1">
@@ -44,8 +53,9 @@ export default function VehicleListing() {
           <Text className="text-white font-interSemiBold text-[20px]">
             Carros no estacionamento:
           </Text>
-          {handleListingVehicle. (
-            <View className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center ">
+          {vehicle ? (
+          vehicle.map((vehicles) => (
+            <View className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center" key={vehicles.placa}>
               <View
                 className=" ml-[14px] items-center border-solid justify-center border border-gray400 rounded-[20px] min-w-[62px] min-h-[63px]"
                 style={{ boxShadow: "0px 8px 14.6px 0px rgba(0, 0, 0, 0.15)" }}
@@ -58,22 +68,24 @@ export default function VehicleListing() {
               </View>
               <View className="flex-col ml-[16px] gap-[8px]">
                 <Text className="font-inter text-[13px] text-gray100">
-                  Entrada: 14:37
+                  Entrada: {vehicles.horarioEntrada}
                 </Text>
                 <View className=" w-[85%] items-center justify-between flex-row ">
                   <Text className="font-inter text-[13px] text-black500">
-                    BRA3E23
+                    {vehicles.placa}
                   </Text>
                   <Text className="font-interSemiBold text-[10px] text-black500">
-                    02/09/2025
+                    {vehicles.dataEntrada}
                   </Text>
                 </View>
-                <Text className="font-inter text-[13px] text-gray100">
-                  Saída: 17:20
-                </Text>
+
               </View>
             </View>
-          )}
+          ) 
+           ) ): (
+            <Text>Nenhum veiculo</Text>
+          )
+          }
         </View>
       </View>
     </View>
