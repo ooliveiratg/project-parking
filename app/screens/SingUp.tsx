@@ -9,30 +9,32 @@ import { userFormData } from "../utils/form";
 import { position } from "app/interfaces/components/input";
 import React, { useState } from 'react';
 import { Login } from "services/Login";
+import { useAuth } from "app/hook/useAuth";
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
-  const [firstName, setFirstName] =useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const { registerAuth, handleRegisterChange, loading,setLoading } = useAuth();
   if (!fonts) return null;
-  
-  const handleRegister =  async () => {
 
-    const nome = `${firstName.trim()} ${lastName.trim()}`
-    
-    try{
-      const response = await Register({ name:nome, email, senha:password })
-       if(response?.success === true){
-        const result = await Login({email,senha:password })
-        if(result?.success === true){
-        return router.replace("screens/Home")
-       } 
-        }else {
-    console.log("Não foi possível cadastrar");
-  }
-    }catch(error){
+  const handleRegister = async () => {
+
+    const nome = `${registerAuth.firstName.trim()} ${registerAuth.lastName.trim()}`
+
+    try {
+      const response = await Register({
+        name: nome, email: registerAuth.email, senha: registerAuth.senha,
+        firstName: "",
+        lastName: ""
+      })
+      if (response?.success === true) {
+        const result = await Login({ email: registerAuth.email, senha: registerAuth.senha })
+        if (result?.success === true) {
+          return router.replace("screens/Home")
+        }
+      } else {
+        console.log("Não foi possível cadastrar");
+      }
+    } catch (error) {
       console.log(error)
     }
   }
@@ -73,8 +75,8 @@ export default function SingUp() {
               placeholder={"Nome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
-              onChange={(text) => setFirstName(text)}
-              value={firstName}
+              onChange={handleRegisterChange}
+              value={registerAuth.firstName}
             />
           </View>
 
@@ -86,8 +88,8 @@ export default function SingUp() {
               placeholder={"Sobrenome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
-              onChange={(text) => setLastName(text)}
-              value={lastName}
+              onChange={handleRegisterChange}
+              value={registerAuth.lastName}
             />
           </View>
         </View>
@@ -97,36 +99,36 @@ export default function SingUp() {
               <Text className="font-jakarSans text-gray200 text-[12px]">
                 {form.label}
               </Text>
-              <Input 
-              placeholder={form.label}
-              icon={form.type}
-              iconPosition={position.RIGHT}
-              border="border border-gray300"
-              shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }} 
-              {...(form.type === "Email" ? { onChange: (text) => setEmail(text) } : (form.type === "password" ? { onChange: (text) => setPassword(text) } : {}))}
-              {...(form.type === "Email" ? { value: email } : (form.type === "password" ? { value: password } : {}))}
+              <Input
+                placeholder={form.label}
+                icon={form.type}
+                iconPosition={position.RIGHT}
+                border="border border-gray300"
+                shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
+                {...(form.type === "Email" ? { onChange: handleRegisterChange } : (form.type === "password" ? { onChange: handleRegisterChange} : {}))}
+                {...(form.type === "Email" ? { value: registerAuth.email } : (form.type === "password" ? { value: registerAuth.senha } : {}))}
               />
             </View>
           ))}
         </View>
         <View className="flex ">
-                    <ButtonStyle
-              title={"Cadastro"}
-              gradient={true}
-              width="min-w-full"
-              height="h-[48px]"
-              onPress={() => handleRegister()}
-              Style={[
-                {
-                  boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",
-                  shadowRadius: 10,
-                },
-                {
-                  boxShadow: "0px 0px 0px 1px #253EA7",
-                  shadowRadius: 10,
-                },
-              ]}></ButtonStyle>
-              </View>
+          <ButtonStyle
+            title={loading ? "Carregando..." : "Cadastrar"}
+            gradient={true}
+            width="min-w-full"
+            height="h-[48px]"
+            onPress={() => handleRegister()}
+            Style={[
+              {
+                boxShadow: "0px 1px 2px 0px rgb(37,62,167,0.48)",
+                shadowRadius: 10,
+              },
+              {
+                boxShadow: "0px 0px 0px 1px #253EA7",
+                shadowRadius: 10,
+              },
+            ]}></ButtonStyle>
+        </View>
       </View>
     </View>
   );

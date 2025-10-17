@@ -19,6 +19,7 @@ const  { token,fetchUser,username,setToken } = usernameState()
   },[token])
 
   if (!token) return null
+  
 
   const handleLogut = () => {
     setToken(null)

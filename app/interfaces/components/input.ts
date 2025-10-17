@@ -9,7 +9,7 @@ export interface InputTypes {
   iconName?: React.ReactNode;
   bg?: string;
   textColorPlaceholder?: string;
-  onChange?: (text: string) => void;
+  onChange?: (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   value?: string;
   Textcolor?: string
 }
