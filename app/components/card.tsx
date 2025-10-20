@@ -20,10 +20,10 @@ export function Card() {
       >
         {buttons.map((button, index) => (
           <View
-            key={button.name}
+            key={button?.name ?? index}
             className={index !== buttons.length - 1 ? "mr-4" : ""}
           >
-            {button.content}
+            {button?.content ?? null}
           </View>
         ))}
       </ScrollView>

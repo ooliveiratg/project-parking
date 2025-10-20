@@ -1,5 +1,5 @@
 import { ButtonStyle } from "app/components/button"
-import { MaterialIcons } from "node_modules/@expo/vector-icons/build/Icons"
+import { MaterialIcons } from "@expo/vector-icons"
 import { View, Text } from "react-native"
 import { useRouter } from "expo-router"
 

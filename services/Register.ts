@@ -7,14 +7,15 @@ export async function Register(data: validationRegisterType) {
     try {
         const result = ZodValidate(RegisterSchema,data)
         if(!result.success) {
-            console.error(result.error.flatten())
-            return;
+                return { success: false, error: "Erro de validação", zodError: result.error.flatten() }
         }
+        console.log(data)
         const response = await api.post('/auth/register', {
             nome: data.name,
             email: data.email,
             senha: data.senha
         })
+        console.log(response.data)
          return { success: true, response: response }
     } catch (error:any) {
         return { success: false, error: error.message || error.data }

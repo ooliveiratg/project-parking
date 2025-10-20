@@ -4,6 +4,9 @@ import { ZodValidate } from "../app/utils/zodValidationUtil";
 import { LoginSchema } from "../validations/validation-zod";
 import { usernameState } from "../app/store/username"
 
+interface getToken{
+    data: {token:string}
+}
 
 
 export async function Login(data: validationZodType) {
@@ -14,10 +17,11 @@ export async function Login(data: validationZodType) {
             console.error(result.error.flatten())
             return;
         }
-        const response = await api.post('/auth/login', {
+        const response:getToken = await api.post('/auth/login', {
             email: data.email,
             senha: data.senha
         })
+        console.log(response.data.token)
        usernameState.getState().setToken( response.data.token )
         return { success: true, response: response.data.token }
     } catch (error:any) {

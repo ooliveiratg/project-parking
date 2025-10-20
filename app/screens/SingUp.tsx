@@ -7,35 +7,40 @@ import { Input } from "app/components/input";
 import { Register } from "../../services/Register";
 import { userFormData } from "../utils/form";
 import { position } from "app/interfaces/components/input";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Login } from "services/Login";
-import { useAuth } from "app/hook/useAuth";
+
 export default function SingUp() {
   const router = useRouter();
   const [fonts] = useAppFonts();
-  const { registerAuth, handleRegisterChange, loading,setLoading } = useAuth();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
   if (!fonts) return null;
 
   const handleRegister = async () => {
-
-    const nome = `${registerAuth.firstName.trim()} ${registerAuth.lastName.trim()}`
+    const nome = `${firstName.trim()} ${lastName.trim()}`;
+    setLoading(true);
 
     try {
-      const response = await Register({
-        name: nome, email: registerAuth.email, senha: registerAuth.senha,
-        firstName: "",
-        lastName: ""
-      })
-      if (response?.success === true) {
-        const result = await Login({ email: registerAuth.email, senha: registerAuth.senha })
-        if (result?.success === true) {
-          return router.replace("screens/Home")
+      const response = await Register({ name: nome, email, senha: password });
+        if(response?.success === true){
+        const result = await Login({email,senha:password })
+        if(result?.success === true){
+        return router.replace("screens/Home")
+       }} else{
+        if (response.zodError) {
+          console.log("Erros de validação:", response.zodError.fieldErrors);
+        } else {
+          console.log("Erro do servidor:", response.error);
         }
-      } else {
-        console.log("Não foi possível cadastrar");
+        return;
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -75,8 +80,8 @@ export default function SingUp() {
               placeholder={"Nome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
-              onChange={handleRegisterChange}
-              value={registerAuth.firstName}
+              onChange={(text) => setFirstName(text)}
+              value={firstName}
             />
           </View>
 
@@ -88,8 +93,8 @@ export default function SingUp() {
               placeholder={"Sobrenome"}
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
-              onChange={handleRegisterChange}
-              value={registerAuth.lastName}
+              onChange={(text) => setLastName(text)}
+              value={lastName}
             />
           </View>
         </View>
@@ -105,8 +110,16 @@ export default function SingUp() {
                 iconPosition={position.RIGHT}
                 border="border border-gray300"
                 shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
-                {...(form.type === "Email" ? { onChange: handleRegisterChange } : (form.type === "password" ? { onChange: handleRegisterChange} : {}))}
-                {...(form.type === "Email" ? { value: registerAuth.email } : (form.type === "password" ? { value: registerAuth.senha } : {}))}
+                {...(form.type === "Email"
+                  ? { onChange: (text) => setEmail(text) }
+                  : form.type === "password"
+                    ? { onChange: (text) => setPassword(text) }
+                    : {})}
+                {...(form.type === "Email"
+                  ? { value: email }
+                  : form.type === "password"
+                    ? { value: password }
+                    : {})}
               />
             </View>
           ))}
@@ -127,7 +140,8 @@ export default function SingUp() {
                 boxShadow: "0px 0px 0px 1px #253EA7",
                 shadowRadius: 10,
               },
-            ]}></ButtonStyle>
+            ]}
+          ></ButtonStyle>
         </View>
       </View>
     </View>

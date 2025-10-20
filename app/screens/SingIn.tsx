@@ -9,18 +9,20 @@ import { useAppFonts } from "../utils/fonts";
 import { position } from "app/interfaces/components/input";
 import { Login } from "services/Login";
 import React, { useState } from 'react';
-import { useAuth } from "app/hook/useAuth";
 
 export default function SingIn() {
   const router = useRouter();
   const [fonts] = useAppFonts();
-  const { loginAuth, handleLoginChange,loading,setLoading } = useAuth();
+   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+
   if (!fonts) return null;
 
   const handleLogin = async () => {
     setLoading(true);
     try {
-       const result = await Login({email: loginAuth.email, senha: loginAuth.senha});
+           const result = await Login({email, senha:password})
        if(result?.success === true){
         setLoading(false);
         return router.replace("screens/Home")
@@ -43,8 +45,8 @@ export default function SingIn() {
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
             <Input bg="white" placeholder={"Digite seu email"} icon="email"
-              onChange={handleLoginChange}
-              value={loginAuth.email}
+              onChange={(text) => setEmail(text)}
+              value={email}
             />
 
             <Input
@@ -52,8 +54,8 @@ export default function SingIn() {
               bg="white"
               placeholder={"Digite sua senha"}
               icon="password"
-              onChange={handleLoginChange}
-              value={loginAuth.senha}
+              onChange={(text) => setPassword(text)}
+              value={password}
             />
 
             <View className="flex-row justify-between mt-[24px] mb-[24px]">
