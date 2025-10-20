@@ -113,92 +113,94 @@ export default function VehicleListing() {
 
         <View className="mt-[36px] ml-[8px] pl-[12px] pr-[12px] flex-1 flex-col items-start justify-start ">
           <Text className="text-white f ont-interSemiBold text-[20px]">
-            {isClick === true ? "Carros no estacionamento:" : "Histórico:"}
+            {isClick ? "Carros no estacionamento:" : "Histórico:"}
           </Text>
-          {isClick === true ? (
-            <ScrollView
-              className="mt-[16px] w-full"
-              showsVerticalScrollIndicator={false} 
-              contentContainerStyle={{ paddingBottom: 20 }}
-            >
-              {vehicle ? (
-                vehicle.map((vehicles) => (
-                  <View
-                    className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center"
-                    key={vehicles.placa}
-                  >
-                    <View
-                      className=" ml-[14px] items-center border-solid justify-center border border-gray400 rounded-[20px] min-w-[62px] min-h-[63px]"
-                      style={{
-                        boxShadow: "0px 8px 14.6px 0px rgba(0, 0, 0, 0.15)",
-                      }}
-                    >
-                      <MaterialIcons
-                        name="directions-car"
-                        color={"#404040"}
-                        size={27}
-                      />
-                    </View>
-                    <View className="flex-col ml-[16px] gap-[8px]">
-                      <Text className="font-inter text-[13px] text-gray100">
-                        Entrada: {vehicles.horarioEntrada}
-                      </Text>
-                      <View className=" w-[85%] items-center justify-between flex-row ">
-                        <Text className="font-inter text-[13px] text-black500">
-                          {vehicles.placa}
-                        </Text>
-                        <Text className="font-interSemiBold text-[10px] text-black500">
-                          {vehicles.dataEntrada}
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                ))
-              ) : (
-                <Text className="text-white">Não encontrado</Text>
-              )}
-            </ScrollView>
-          ) : vehicle ? (
-            vehicle.map((vehicles) => (
-              <View
-                className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center"
-                key={vehicles.placa}
-              >
-                <View
-                  className=" ml-[14px] items-center border-solid justify-center border border-gray400 rounded-[20px] min-w-[62px] min-h-[63px]"
-                  style={{
-                    boxShadow: "0px 8px 14.6px 0px rgba(0, 0, 0, 0.15)",
-                  }}
-                >
-                  <MaterialIcons
-                    name="directions-car"
-                    color={"#404040"}
-                    size={27}
-                  />
-                </View>
-                <View className="flex-col ml-[16px] gap-[8px]">
-                  <Text className="font-inter text-[13px] text-gray100">
-                    Entrada: {vehicles.horarioEntrada}
-                  </Text>
-                  <View className=" w-[85%] items-center justify-between flex-row ">
-                    <Text className="font-inter text-[13px] text-black500">
-                      {vehicles.placa}
-                    </Text>
-                    <View className="flex-col gap-[35px]">
-                      <Text className="font-interSemiBold text-[10px] text-black500">
-                        {vehicles.dataEntrada}
-                      </Text>
-                      <Text className="font-interSemiBold text-[10px] text-black500">
-                        {vehicles.valorPago}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+          {isClick ? (
+  // exibe veículos no estacionamento
+  <ScrollView
+    className="mt-[16px] w-full"
+    showsVerticalScrollIndicator={false}
+    contentContainerStyle={{ paddingBottom: 20 }}
+  >
+    {vehicle && vehicle.length > 0 ? (
+      vehicle.map((vehicles) => (
+        <View
+          className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center"
+          key={vehicles.placa}
+        >
+          <View
+            className=" ml-[14px] items-center border-solid justify-center border border-gray400 rounded-[20px] min-w-[62px] min-h-[63px]"
+            style={{
+              boxShadow: "0px 8px 14.6px 0px rgba(0, 0, 0, 0.15)",
+            }}
+          >
+            <MaterialIcons name="directions-car" color={"#404040"} size={27} />
+          </View>
+          <View className="flex-col ml-[16px] gap-[8px]">
+            <Text className="font-inter text-[13px] text-gray100">
+              Entrada: {vehicles.horarioEntrada}
+            </Text>
+            <View className=" w-[85%] items-center justify-between flex-row ">
+              <Text className="font-inter text-[13px] text-black500">
+                {vehicles.placa}
+              </Text>
+              <Text className="font-interSemiBold text-[10px] text-black500">
+                {vehicles.dataEntrada}
+              </Text>
+            </View>
+          </View>
+        </View>
+      ))
+    ) : (
+      <Text className="text-white mt-4">Nenhum veículo ativo</Text>
+    )}
+  </ScrollView>
+) : (
+  // exibe histórico
+  <ScrollView
+    className="mt-[16px] w-full"
+    showsVerticalScrollIndicator={false}
+    contentContainerStyle={{ paddingBottom: 20 }}
+  >
+    {vehicle && vehicle.length > 0 ? (
+      vehicle.map((vehicles) => (
+        <View
+          className="mt-[23.77px] w-full h-[94px] bg-white rounded-[20px] flex-row items-center"
+          key={vehicles.placa}
+        >
+          <View
+            className=" ml-[14px] items-center border-solid justify-center border border-gray400 rounded-[20px] min-w-[62px] min-h-[63px]"
+            style={{
+              boxShadow: "0px 8px 14.6px 0px rgba(0, 0, 0, 0.15)",
+            }}
+          >
+            <MaterialIcons name="directions-car" color={"#404040"} size={27} />
+          </View>
+          <View className="flex-col ml-[16px] gap-[8px]">
+            <Text className="font-inter text-[13px] text-gray100">
+              Entrada: {vehicles.horarioEntrada}
+            </Text>
+            <View className=" w-[85%] items-center justify-between flex-row ">
+              <Text className="font-inter text-[13px] text-black500">
+                {vehicles.placa}
+              </Text>
+              <View className="flex-col gap-[35px]">
+                <Text className="font-interSemiBold text-[10px] text-black500">
+                  {vehicles.dataEntrada}
+                </Text>
+                <Text className="font-interSemiBold text-[10px] text-black500">
+                  {vehicles.valorPago ?? "—"}
+                </Text>
               </View>
-            ))
-          ) : (
-            <Text>Nenhum veiculo</Text>
-          )}
+            </View>
+          </View>
+        </View>
+      ))
+    ) : (
+      <Text className="text-white mt-4">Nenhum veiculo encontrado</Text>
+    )}
+  </ScrollView>
+)}
         </View>
       </View>
     </View>
