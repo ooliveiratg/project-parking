@@ -11,18 +11,21 @@ import React, { useState } from "react";
 export default function VehicleExit() {
   const router = useRouter();
   const [placa, setPlaca] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const handleExitVehicle = async () => {
     try {
+      setLoading(true)
       const token = await usernameState.getState().token;
       if (!token) return console.error("Error com o token");
       console.log(token)
       const result = await VehicleExitApi({ placa }, token);
       console.log(result);
       if (result?.success === true) {
+        setLoading(false)
         return router.replace("screens/Home");
       }
     } catch (error) {
+      setLoading(false)
       console.error("Erro ao fazer login:", error);
     }
   };
@@ -57,7 +60,7 @@ export default function VehicleExit() {
             title={
               <View className="bg-blue300 items-center justify-center rounded-[12px] h-[48px]">
                 <Text className="font-interSemiBold text-4 text-white">
-                  Sair
+                  {loading ? "Carregando..." : "Sair"}
                 </Text>
               </View>
             }

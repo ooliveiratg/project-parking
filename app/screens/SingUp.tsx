@@ -28,13 +28,17 @@ export default function SingUp() {
     try {
       const response = await Register({ name: nome, email, senha: password });
         if(response?.success === true){
+          
         const result = await Login({email,senha:password })
         if(result?.success === true){
+          setLoading(false);
         return router.replace("screens/Home")
        }} else{
         if (response.zodError) {
+          
           console.log("Erros de validação:", response.zodError.fieldErrors);
         } else {
+          setLoading(false);
           console.log("Erro do servidor:", response.error);
         }
         return;

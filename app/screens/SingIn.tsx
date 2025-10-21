@@ -29,6 +29,7 @@ export default function SingIn() {
 
        } 
     } catch (error) {
+      setLoading(false);
       console.error("Erro ao fazer login:", error);
     }
   }
