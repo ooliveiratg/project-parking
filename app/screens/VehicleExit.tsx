@@ -7,6 +7,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { VehicleExitApi } from "../../services/VehicleExitApi";
 import { usernameState } from "app/store/username";
 import React, { useState } from "react";
+import Toast from "react-native-toast-message";
 
 export default function VehicleExit() {
   const router = useRouter();
@@ -14,18 +15,24 @@ export default function VehicleExit() {
   const [loading, setLoading] = useState(false);
   const handleExitVehicle = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const token = await usernameState.getState().token;
-      if (!token) return console.error("Error com o token");
-      console.log(token)
+      if (!token) {
+        Toast.show({
+          type: "error",
+          text1: "Error com o token",
+        });
+        return 
+      }
+
       const result = await VehicleExitApi({ placa }, token);
       console.log(result);
       if (result?.success === true) {
-        setLoading(false)
+        setLoading(false);
         return router.replace("screens/Home");
       }
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.error("Erro ao fazer login:", error);
     }
   };

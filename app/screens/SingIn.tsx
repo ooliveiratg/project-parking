@@ -8,32 +8,45 @@ import { ButtonStyle } from "app/components/button";
 import { useAppFonts } from "../utils/fonts";
 import { position } from "app/interfaces/components/input";
 import { Login } from "services/Login";
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Toast from "react-native-toast-message";
 
 export default function SingIn() {
   const router = useRouter();
   const [fonts] = useAppFonts();
-   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   if (!fonts) return null;
 
   const handleLogin = async () => {
     setLoading(true);
     try {
-           const result = await Login({email, senha:password})
-       if(result?.success === true){
+      const result = await Login({ email, senha: password });
+      if (!result.success) {
         setLoading(false);
-        return router.replace("screens/Home")
 
-       } 
+        const message =
+          typeof result.message === "object"
+            ? Object.values(result.message).flat().join("\n")
+            : result.message || "Email/senha inválido";
+        Toast.show({
+          type: "error",
+          text1: message,
+        });
+
+        return;
+      }
+      if (result?.success === true) {
+        setLoading(false);
+        return router.replace("screens/Home");
+      }
     } catch (error) {
       setLoading(false);
       console.error("Erro ao fazer login:", error);
     }
-  }
-
+  };
 
   return (
     <View className="flex-1">
@@ -45,7 +58,10 @@ export default function SingIn() {
         <View className="flex-col justify-center items-center gap-[96px] flex-1 ">
           <Logo />
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
-            <Input bg="white" placeholder={"Digite seu email"} icon="email"
+            <Input
+              bg="white"
+              placeholder={"Digite seu email"}
+              icon="email"
               onChange={(text) => setEmail(text)}
               value={email}
             />
@@ -64,9 +80,10 @@ export default function SingIn() {
                 <ButtonStyle
                   onPress={() => router.replace("screens/SingUp")}
                   title={
-                    <Text className="text-white font-inter border-b border-white">Cadastre-se</Text>
+                    <Text className="text-white font-inter border-b border-white">
+                      Cadastre-se
+                    </Text>
                   }
-
                 ></ButtonStyle>
               </View>
             </View>

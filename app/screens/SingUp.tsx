@@ -9,6 +9,7 @@ import { userFormData } from "../utils/form";
 import { position } from "app/interfaces/components/input";
 import React, { useState } from "react";
 import { Login } from "services/Login";
+import Toast from "react-native-toast-message";
 
 export default function SingUp() {
   const router = useRouter();
@@ -27,26 +28,50 @@ export default function SingUp() {
 
     try {
       const response = await Register({ name: nome, email, senha: password });
-        if(response?.success === true){
-          
-        const result = await Login({email,senha:password })
-        if(result?.success === true){
-          setLoading(false);
-        return router.replace("screens/Home")
-       }} else{
-        if (response.zodError) {
-          
-          console.log("Erros de validação:", response.zodError.fieldErrors);
-        } else {
-          setLoading(false);
-          console.log("Erro do servidor:", response.error);
-        }
+      if (!response.success) {
+        setLoading(false);
+
+        const message =
+          typeof response.message === "object"
+            ? Object.values(response.message).flat().join("\n")
+            : response.message || "Email já cadastrado";
+        Toast.show({
+          type: "error",
+          text1: message,
+        });
+
         return;
       }
+      if (response?.success === true) {
+        const result = await Login({ email, senha: password });
+
+        if (!result.success) {
+          setLoading(false);
+
+          const message =
+            typeof result.message === "object"
+              ? Object.values(result.message).flat().join("\n")
+              : result.message || "Email/senha inválido";
+          Toast.show({
+            type: "error",
+            text1: message,
+          });
+
+          return;
+        }
+
+        if (result?.success === true) {
+          setLoading(false);
+          return router.replace("screens/Home");
+        }
+      } else {
+        setLoading(false);
+      }
+      return;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <View className="flex-1">

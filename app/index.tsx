@@ -9,7 +9,7 @@ import Animated, {
 import Logo from "../assets/svg/Logo.svg";
 import "../NativeWind.css";
 import React, { useEffect } from "react";
-
+import Toast from 'react-native-toast-message';
 import { useRouter } from "expo-router";
 
 export default function Index() {
@@ -24,7 +24,6 @@ export default function Index() {
     scale.value = withTiming(2, { duration: 3000 });
     opacity.value = withTiming(0, { duration: 3000 });
     const timer = setTimeout(() => {
-      console.log("SplashScreen escondida");
       router.replace("/screens/SingIn");
     }, 3000);
     return () => clearTimeout(timer);
@@ -44,6 +43,7 @@ export default function Index() {
           <Logo />
         </View>
       </Animated.View>
+          <Toast /> 
     </SafeAreaView>
   );
 }

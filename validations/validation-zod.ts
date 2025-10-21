@@ -6,7 +6,7 @@ export const LoginSchema = z.object({
 })
 
 export const RegisterSchema = z.object({
-    name: z.string().max(140, "Erro no tamanho do nome completo"),
+    name: z.string().max(140, "Erro no tamanho do nome completo").nonempty("O nome é obrigatório"),
     email: z.string().email("Email inválido"),
     senha: z.string().min(6, "Senha deve ter no mínimo 6 caracteres")
 })

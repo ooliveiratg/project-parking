@@ -4,31 +4,38 @@ import { Input } from "app/components/input";
 import { ButtonStyle } from "app/components/button";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { VehicleRegistrationApi } from "../../services/vehicleRegistration"
-import React, { useState } from 'react';
+import { VehicleRegistrationApi } from "../../services/vehicleRegistration";
+import React, { useState } from "react";
 import { usernameState } from "app/store/username";
- 
+import Toast from "react-native-toast-message";
+
 export default function VehicleRegistration() {
   const router = useRouter();
- const [placa, setPlaca] = useState("")
- const [loading, setLoading] = useState(false);
+  const [placa, setPlaca] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleRegisterVehicle = async () => {
     try {
-      setLoading(true)
-        const token = await usernameState.getState().token
-        if (!token) return console.error("Error com o token");
-      const result = await VehicleRegistrationApi({placa}, token);
-      if(result?.success === true) {
-        setLoading(false)
+      setLoading(true);
+      const token = await usernameState.getState().token;
+      if (!token) {
+        Toast.show({
+          type: "error",
+          text1: "Error com o token",
+        });
+        return;
+      }
+      const result = await VehicleRegistrationApi({ placa }, token);
+      if (result?.success === true) {
+        setLoading(false);
         return router.replace("screens/Home");
       }
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.error("Erro ao fazer login:", error);
     }
   };
-   return (
+  return (
     <ImageBackground
       source={BackgroundVehicle}
       className="flex-1 bg-black400 justify-center items-start pl-[32px] pr-[32px]"
@@ -55,7 +62,7 @@ export default function VehicleRegistration() {
           />
 
           <ButtonStyle
-          onPress={() => handleRegisterVehicle()}
+            onPress={() => handleRegisterVehicle()}
             title={
               <View className="bg-blue300 items-center justify-center rounded-[12px] h-[48px]">
                 <Text className="font-interSemiBold text-4 text-white">

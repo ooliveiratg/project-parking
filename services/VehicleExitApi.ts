@@ -8,9 +8,12 @@ export async function VehicleExitApi(data: validationVehicleType, token: string)
   
   try {
     const result = ZodValidate(VehicleSchema, data);
-    if (!result.success) {
-      console.error(result.error.flatten());
-      return;
+   if (!result.success === true) {
+      const { fieldErrors } = result.error.flatten();
+      return {
+        success: false,
+        message: fieldErrors,
+      };
     }
 
     const response = await api.put("/api/veiculos/saida", {
