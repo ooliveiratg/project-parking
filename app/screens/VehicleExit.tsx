@@ -26,7 +26,7 @@ export default function VehicleExit() {
       }
 
       const result = await VehicleExitApi({ placa }, token);
-      console.log(result);
+
       if (result?.success === true) {
         setLoading(false);
         return router.replace("screens/Home");

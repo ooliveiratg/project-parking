@@ -8,7 +8,7 @@ export async function VehicleRegistrationApi(data: validationVehicleType, token:
   
   try {
     const result = ZodValidate(VehicleSchema, data);
-    console.log(result)
+
     if (!result.success === true) {
       const { fieldErrors } = result.error.flatten();
       return {
@@ -23,7 +23,7 @@ export async function VehicleRegistrationApi(data: validationVehicleType, token:
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response.data);
+
     return { success: true, response: response.data };
   } catch (error: any) {
     return { success: false, error: error.message || error.data };

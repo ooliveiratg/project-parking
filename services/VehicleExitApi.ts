@@ -22,7 +22,7 @@ export async function VehicleExitApi(data: validationVehicleType, token: string)
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response.data);
+
     return { success: true, response: response.data };
   } catch (error: any) {
     return { success: false, error: error.message || error.data };

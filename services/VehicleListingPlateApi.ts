@@ -21,8 +21,7 @@ export async function VehicleListingPlateApi(plate:string) {
       horarioSaida: vehicle.horarioSaida,
       valorPago: vehicle.valorPago
     }))
-    console.log(result)
-    console.log(vehicles)
+
     return { success: true, response: vehicles}
 
     } catch (error: any) {
