@@ -11,7 +11,7 @@ export async function VehicleListingApi() {
   try {
     const response = await api.get<Vehicle[]>("/api/veiculos");
     const result = response.data
-
+ 
     const vehicles: Vehicle[] = result.map(vehicle => ({
       placa: vehicle.placa,
       dataEntrada: vehicle.dataEntrada,

@@ -25,7 +25,7 @@ export default function SingIn() {
     try {
       const result = await Login({ email, senha: password });
       if (!result.success) {
-        setLoading(false);
+        
 
         const message =
           typeof result.message === "object"
@@ -39,12 +39,14 @@ export default function SingIn() {
         return;
       }
       if (result?.success === true) {
-        setLoading(false);
+   
         return router.replace("screens/Home");
       }
     } catch (error) {
-      setLoading(false);
+    
       console.error("Erro ao fazer login:", error);
+    } finally{
+       setLoading(false)
     }
   };
 
@@ -60,8 +62,10 @@ export default function SingIn() {
           <View className="flex-col mr-[9.4%] ml-[9.4%]">
             <Input
               bg="white"
+              textColorPlaceholder="black"
               placeholder={"Digite seu email"}
               icon="email"
+              Textcolor="text-black"
               onChange={(text) => setEmail(text)}
               value={email}
             />
@@ -69,6 +73,8 @@ export default function SingIn() {
             <Input
               iconPosition={position.BOTH}
               bg="white"
+              textColorPlaceholder="black"
+              Textcolor="text-black"
               placeholder={"Digite sua senha"}
               icon="password"
               onChange={(text) => setPassword(text)}

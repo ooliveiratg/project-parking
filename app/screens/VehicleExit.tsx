@@ -26,14 +26,28 @@ export default function VehicleExit() {
       }
 
       const result = await VehicleExitApi({ placa }, token);
+            if (!result.success) {
+              
+      
+              const message =
+                typeof result.message === "object"
+                  ? Object.values(result.message).flat().join("\n")
+                  : result.message || "Email/senha inválido";
+              Toast.show({
+                type: "error",
+                text1: message,
+              });
+      
+              return;
+            }
 
       if (result?.success === true) {
-        setLoading(false);
         return router.replace("screens/Home");
       }
     } catch (error) {
-      setLoading(false);
       console.error("Erro ao fazer login:", error);
+    }finally{
+       setLoading(false)
     }
   };
   return (

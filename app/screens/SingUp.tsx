@@ -29,8 +29,6 @@ export default function SingUp() {
     try {
       const response = await Register({ name: nome, email, senha: password });
       if (!response.success) {
-        setLoading(false);
-
         const message =
           typeof response.message === "object"
             ? Object.values(response.message).flat().join("\n")
@@ -46,8 +44,6 @@ export default function SingUp() {
         const result = await Login({ email, senha: password });
 
         if (!result.success) {
-          setLoading(false);
-
           const message =
             typeof result.message === "object"
               ? Object.values(result.message).flat().join("\n")
@@ -61,15 +57,14 @@ export default function SingUp() {
         }
 
         if (result?.success === true) {
-          setLoading(false);
           return router.replace("screens/Home");
         }
-      } else {
-        setLoading(false);
       }
       return;
     } catch (error) {
       console.log(error);
+    } finally{
+       setLoading(false)
     }
   };
 
@@ -107,6 +102,8 @@ export default function SingUp() {
             </Text>
             <Input
               placeholder={"Nome"}
+              textColorPlaceholder="black"
+              Textcolor="text-black"
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
               onChange={(text) => setFirstName(text)}
@@ -120,6 +117,8 @@ export default function SingUp() {
             </Text>
             <Input
               placeholder={"Sobrenome"}
+              textColorPlaceholder="black"
+              Textcolor="text-black"
               border="border border-gray300"
               shadow={{ boxShadow: "0px 1px 2px 0px rgb(228,229,231,0.24)" }}
               onChange={(text) => setLastName(text)}
@@ -134,6 +133,8 @@ export default function SingUp() {
                 {form.label}
               </Text>
               <Input
+                textColorPlaceholder="black"
+                Textcolor="text-black"
                 placeholder={form.label}
                 icon={form.type}
                 iconPosition={position.RIGHT}
