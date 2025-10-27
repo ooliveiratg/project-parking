@@ -3,6 +3,7 @@
     "name": "project-parking",
     "slug": "project-parking",
     "version": "1.0.0",
+    "icon": "./app/assets/png/Logo.png",
     "scheme": "meuapp",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
@@ -12,7 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/png/Logo.png",
+        "backgroundColor": "#FFFFF"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.ooliveira.tg.projectparking"
@@ -25,11 +27,12 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/png/Car.png",
-          "imageWidth": 200,
+          "image": "./assets/png/Logo.png",
+          "imageWidth": 200, 
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#0D0D0D"
         }
+        
       ],
       "expo-font"
     ],
