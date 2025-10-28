@@ -14,10 +14,15 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/png/Logo.png",
-        "backgroundColor": "#FFFFFF"  
+        "backgroundColor": "#0D0D0D"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.ooliveira.tg.projectparking"
+      "package": "com.ooliveira.tg.projectparking",
+      "splash": {
+        "image": "./app/assets/png/Logo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#0D0D0D"
+      }
     },
     "web": {
       "bundler": "metro"
@@ -35,11 +40,18 @@
       ],
       "expo-font"
     ],
+    "splash": {
+      "image": "./app/assets/png/Logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D0D"
+    },
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "c952c3d4-0ba3-48ed-ab73-94b7f29e263e"
+        "projectId": "d9b85507-4725-4067-b069-0c65ff71e6dd"
       }
     }
   }
 }
+
+ 
