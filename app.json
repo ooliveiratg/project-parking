@@ -13,8 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/png/Logo.png",
-        "backgroundColor": "#FFFFF"
+        "foregroundImage": "./app/assets/png/Logo.png",
+        "backgroundColor": "#FFFFFF"  
       },
       "edgeToEdgeEnabled": true,
       "package": "com.ooliveira.tg.projectparking"
@@ -27,12 +27,11 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/png/Logo.png",
-          "imageWidth": 200, 
+          "image": "./app/assets/png/Logo.png",
+          "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#0D0D0D"
         }
-        
       ],
       "expo-font"
     ],
